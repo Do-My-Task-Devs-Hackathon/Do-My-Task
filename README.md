@@ -12,3 +12,9 @@ Do My Task uses:
 ## Getting Started 
 
 To be continued
+
+
+## Test account
+
+Email: test@dmt.com
+Password: Dmt1234!
