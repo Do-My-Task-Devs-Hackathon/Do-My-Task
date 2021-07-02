@@ -4,8 +4,8 @@ import { Card, CardHeader, CardContent, CardActions, Button  } from '@material-u
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      width: "345px",
-      boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+        width: "345px",
+        boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
     },
 
     header: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#e5e3ff",
         }
     },
-  }));
+}));
 
 export default function TaskCard(props) {
     const classes = useStyles();
@@ -62,7 +62,7 @@ export default function TaskCard(props) {
                 </Button>
 
                 <Button className={classes.detailsBtn}>
-                    Details                    
+                    Details
                 </Button>
             </CardActions>
         </Card>

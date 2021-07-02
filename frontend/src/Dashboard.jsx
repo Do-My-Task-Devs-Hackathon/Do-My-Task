@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskCard from './TaskCard';
+import TaskCard from './components/TaskCard';
 
 
 export default function Dashboard() {
