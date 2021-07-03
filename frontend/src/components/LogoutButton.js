@@ -5,12 +5,14 @@ import { Button } from '@material-ui/core';
 const LogoutButton = () => {
   const { logout } = useAuth0();
   const { user } = useAuth0();
-  const { name } = user;
+  const { name, email } = user;
   return (
     <div>
       <div style={{display: 'flex'}}>
           <p style={{fontFamily: 'Arial', textAlign: 'center'}}>
                   {name}
+                  <br/>
+                  {email}
           </p>
           {/* {JSON.stringify(user.sub, null, 2)} */}
       </div>
