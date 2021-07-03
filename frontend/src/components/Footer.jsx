@@ -36,14 +36,14 @@ export default function Footer() {
     return (
         <footer className={classes.footer}>
             <div className={classes.flexRow}>
-                <p class="contrast-color paragraph-size">Follow us at: </p>
+                <p className="contrast-color paragraph-size">Follow us at: </p>
                 <GitHubIcon className={classes.linkIcon} alt="Facebook icon" title="Facebook" />
                 <LinkedInIcon className={classes.linkIcon} alt="Linkedin icon" title="Linkedin" />
                 <FacebookIcon className={classes.linkIcon} alt="Facebook icon" title="Facebook" />
                 <InstagramIcon className={classes.linkIcon} alt="Instagram icon" title="Instagram" />
                 <TwitterIcon className={classes.linkIcon} alt="Twitter icon" title="Twitter" />
             </div>
-            <p class="contrast-color small-paragraph-size auto-margin-center">© Do-My-Task 2021</p>
+            <p className="contrast-color small-paragraph-size auto-margin-center">© Do-My-Task 2021</p>
         </footer>
     )
 }

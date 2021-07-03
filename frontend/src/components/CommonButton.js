@@ -1,8 +1,8 @@
 import Button from '@material-ui/core/Button'
 
-const CommonButton = ({name})=>{
+const CommonButton = ({name, color, cb})=>{
     return(
-        <Button variant="contained" color="primary">
+        <Button style={{marginLeft: "10px"}} onClick={cb} variant="contained" color={color}>
             {name}
         </Button>
     )
