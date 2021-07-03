@@ -1,12 +1,16 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  }));
 
 export function Layout(props) {
+    const classes = useStyles();
+
 
     return (
-        <div >
-            <div >
-                {props.children}
-            </div>
+        <div>
+            {props.children}
         </div>
     );
 

@@ -1,5 +1,5 @@
 import './App.css';
-import Dashboard from './Dashboard';
+import Dashboard from './pages/Dashboard';
 import { Layout } from './Layout';
 import { Route } from 'react-router';
 
