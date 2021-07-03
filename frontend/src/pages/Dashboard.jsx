@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
+import AvatarCard from '../components/AvatarCard';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     invitedSection: {
         backgroundColor: "#c8d8e4",
     },
-    
+
 
     footer: {
         display: "flex",
@@ -112,9 +113,13 @@ export default function Dashboard() {
                 <div className={classes.hostHeader}>
                     <div className={classes.sectionTitle}>
                         <h1 className={classes.heading}>Members of <u>Project A</u>:</h1>
-                        <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />
                     </div>
                 </div>
+                <Grid container spacing={3}>
+                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
+                        <AvatarCard Lname="Guy" Fname="Lmao" />
+                    </Grid>
+                </Grid>
             </section>
 
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
@@ -153,7 +158,7 @@ export default function Dashboard() {
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
                 <div className={classes.sectionTitle}>
                     <h1 className={classes.heading}>Invited Tasks:</h1>
-                    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi}/>
+                    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
