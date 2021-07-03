@@ -8,14 +8,11 @@ import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
-<<<<<<< HEAD
 import AvatarCard from '../components/AvatarCard';
-=======
 import ModalWindowContainer from '../components/ModalWindowContainer'
 import CreateGame from '../components/create-game/CreateGame'
 import GameDetails from '../components/game-details/GameDetails'
 import GameDetailsReadOnly from '../components/game-details/GameDetailsReadOnly'
->>>>>>> 2dfc85528177e249c60f9c016e3f3d35f6bf6571
 
 const useStyles = makeStyles((theme) => ({
     heading: {
