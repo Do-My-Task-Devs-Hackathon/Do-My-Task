@@ -5,14 +5,18 @@ class Task extends Model {}
 
 Task.init({
   // Model attributes are defined here
+  
+  user_id: { //host 
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false
     
   },
-  total_user: {
-    type: DataTypes.INTEGER
-    // allowNull defaults to true
+  description: {  
+    type: DataTypes.STRING
   }
 }, {
   // Other model options go here
