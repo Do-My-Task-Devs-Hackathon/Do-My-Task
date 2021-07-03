@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardHeader, CardContent, CardActions, Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
+import CreateProject from '../components/create-project/CreateProject';
+import ModalWindowContainer from './ModalWindowContainer';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -32,19 +35,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProjectCard(props) {
     const classes = useStyles();
+    const [createProject, openCreateProject] = React.useState(false);
+    const history = useHistory();
+
     return (<>
         {!props.isAdd?
             <Grid item lg={3} md={3} sm={6} xs={12} className={classes.projectgrid}>
-                <Card className={classes.card}>
+                <Card className={classes.card} onClick={() => history.push("/Project-A")}>
                     <CardHeader className={classes.projectheader} title="Project A" />
-                    <CardContent><div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div></CardContent>
+                    <CardContent><div>This project leads the Avengers to secure Game Of Throne.</div></CardContent>
                 </Card>
             </Grid>
             :
             <Grid item lg={3} md={3} sm={6} xs={12}>
-                <Card className={`${classes.card} ${classes.addCard}`}>
+                <Card className={`${classes.card} ${classes.addCard}`} onClick={() => openCreateProject(true)}>
                     <AddIcon fontSize="large" className={classes.plusIcon} />
                 </Card>
+                <ModalWindowContainer modalContent={CreateProject} open={createProject} setOpen={openCreateProject} />
             </Grid>
         }
         </>

@@ -18,6 +18,7 @@ import Typography from '@material-ui/core/Typography'
 import AppContextProvider from '../AppContextProvider';
 import axios from 'axios';
 import http from "../http-common.js";
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -133,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HostView() {
     const classes = useStyles();
-
+    const history = useHistory();
     const [anchorElHostHelp, setAnchorElHostHelp] = React.useState(null);
     const handlePopoverOpenHost = (event) => {
         setAnchorElHostHelp(event.currentTarget);
@@ -152,6 +153,7 @@ export default function HostView() {
 
     const data = AppContextProvider.getAllTask();
     console.log(data)
+    window.scrollTo(0, 0);
     return (
         <div>
 
@@ -160,12 +162,6 @@ export default function HostView() {
                 {/* <div className={classes.hostHeader}> */}
 
                 <div>
-                    <div>
-                        <Typography>
-                            <br/>
-                            <br/>
-                        </Typography>
-                    </div>
                     <div style={{float:"left"}}>
                         <Typography variant="h4">
                             Task: Implementing UI
@@ -176,10 +172,10 @@ export default function HostView() {
                         {/*</h1>*/}
                     </div>
                     <div style={{float:"right"}}>
-                        <Button className={classes.btn} >
-                            Discard
+                        <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
+                            Cancel
                         </Button>
-                        <Button className={classes.btn2} >
+                        <Button className={classes.btn2} onClick={() => history.push("/Project-A")}>
                             Submit
                         </Button>
                     </div>
