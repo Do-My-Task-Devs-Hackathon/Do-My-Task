@@ -16,6 +16,7 @@ const LogoutButton = () => {
       </div>
       <Button 
           variant="contained" 
+          color="secondary"
           size="small"
           style={{marginTop: '5px', maxWidth: '100px', maxHeight: '40px', minWidth: '50px', minHeight: '20px'}}
           onClick={() => logout({ returnTo: window.location.origin })}
