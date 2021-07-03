@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardHeader, CardContent, CardActions, Button } from '@material-ui/core';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { Card, CardContent, CardActions, Button } from '@material-ui/core';
+// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+// import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Tooltip from '@material-ui/core/Tooltip';
+import ModalWindowContainer from './ModalWindowContainer'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#f2f2f2",
         }
     },
-    
+
     cardTitle: {
         flexGrow: 1,
     },
@@ -86,6 +88,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TaskCard(props) {
     const classes = useStyles();
+    const {setOpenGDRO, setOpenGD} = props;
+
 
     return (
         <Card className={classes.root}>
@@ -94,7 +98,7 @@ export default function TaskCard(props) {
 
                 <h1 className={classes.cardTitle}>Task title</h1>
 
-                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon}/> : <></>}
+                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon} /> : <></>}
             </header>
 
             <CardContent className={classes.content}>
@@ -108,11 +112,11 @@ export default function TaskCard(props) {
                         Delegate
                     </Button>
 
-                    <Button className={classes.detailsBtn}>
+                    <Button className={classes.detailsBtn} onClick={()=>setOpenGDRO(true)}>
                         Details
                     </Button> </> :
                     <>
-                        <Button className={classes.detailsAndAcceptBtn}>
+                        <Button className={classes.detailsAndAcceptBtn} onClick={()=>setOpenGDRO(true)} >
                             View And Accept/Decline
                         </Button>
                     </>

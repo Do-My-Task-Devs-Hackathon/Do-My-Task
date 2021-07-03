@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TaskCard from '../components/TaskCard';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +8,14 @@ import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
+<<<<<<< HEAD
 import AvatarCard from '../components/AvatarCard';
+=======
+import ModalWindowContainer from '../components/ModalWindowContainer'
+import CreateGame from '../components/create-game/CreateGame'
+import GameDetails from '../components/game-details/GameDetails'
+import GameDetailsReadOnly from '../components/game-details/GameDetailsReadOnly'
+>>>>>>> 2dfc85528177e249c60f9c016e3f3d35f6bf6571
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -107,8 +115,17 @@ export default function Dashboard() {
         setAnchorElHostInvi(null);
     };
 
+    // create task modal window
+    const [createTaskOpen, setCreateTaskOpen] = useState(false)
+    const [openGDRO, setOpenGDRO] = useState(false)
+    const [openGD, setOpenGD] = useState(false)
+
+
     return (
         <div>
+            <ModalWindowContainer modalContent={GameDetails} open={openGD} setOpen={setOpenGD}/>
+            <ModalWindowContainer modalContent={GameDetailsReadOnly} open={openGDRO} setOpen={setOpenGDRO}/>
+            <ModalWindowContainer modalContent={CreateGame} open={createTaskOpen} setOpen={setCreateTaskOpen}/>
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
                 <div className={classes.hostHeader}>
                     <div className={classes.sectionTitle}>
@@ -130,28 +147,14 @@ export default function Dashboard() {
                     </div>
 
 
-                    <Button className={classes.createBtn}><AddIcon />Create Task</Button>
+                    <Button className={classes.createBtn} onClick={()=>setCreateTaskOpen(true)}><AddIcon />Create Task</Button>
                 </div>
                 <Grid container spacing={3}>
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
+                    {[0,1,2,3,4].map(e=>{
+                        return (<Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
+                            <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        </Grid>)
+                    })}
                 </Grid>
             </section>
 
@@ -161,36 +164,24 @@ export default function Dashboard() {
                     <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <TaskCard isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
+                    {[0,1,2,3,4].map(e=>{
+                        return(
+                            <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
+                                <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                            </Grid>
+                        )
+                    })}
                 </Grid>
             </section>
 
             <Footer />
 
             <MousePopover anchorEl={anchorElHostHelp} handlePopoverClose={handlePopoverCloseHost}>
-                <img src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+                <img alt="img_logo1" src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
             </MousePopover>
 
             <MousePopover anchorEl={anchorElHostInvi} handlePopoverClose={handlePopoverCloseInvi}>
-                <img src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+                <img alt="img_logo2" src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
             </MousePopover>
         </div>
     )

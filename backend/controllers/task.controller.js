@@ -128,7 +128,8 @@ exports.loadtasks = (req, res) => {
 
 //get all tasks with user_id
 exports.getTask_user_id = (req,res) =>{
-  const user_id = req.params.user_id;
+  const user_id = req.params.id;
+  console.log(user_id)
 
   Task.findAll({
       where: {
