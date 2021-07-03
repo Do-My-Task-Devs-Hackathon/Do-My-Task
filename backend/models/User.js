@@ -13,7 +13,15 @@ User.init({
   lastName: {
     type: DataTypes.STRING
     // allowNull defaults to true
+  },
+  token: {
+    type: DataTypes.STRING
+    // allowNull defaults to true
+  },
+  status:{ // 0 - Available, 1 - Not too Busy, 2 - Busy
+    type: DataTypes.INTEGER,
   }
+
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance

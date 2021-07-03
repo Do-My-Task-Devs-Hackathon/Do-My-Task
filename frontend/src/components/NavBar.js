@@ -25,9 +25,9 @@ export default function NavBar(props) {
         <div className={classes.root}>
         <AppBar className="Appbar ">
           <a href="/" className="Logo">
-            <img  src="https://user-images.githubusercontent.com/41566813/124341502-e38a2100-dc10-11eb-9648-c8de05097646.png" 
-                  style={{width:"200px", paddingRight:"20px"}} 
-                  alt="dmtLogo"/>
+          <img src="https://user-images.githubusercontent.com/41566813/124344282-5bfadd00-dc25-11eb-8136-7542ef8916b3.png" 
+               style={{width:"200px", paddingRight:"20px", maxWidth: "30%", height: "auto"}} 
+               alt="dmtLogo"/>
           </a>
         <Tab label="About"/>
           <Typography variant="h6" className="profile">
