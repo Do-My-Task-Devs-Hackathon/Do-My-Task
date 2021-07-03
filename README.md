@@ -1,7 +1,7 @@
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" width="400px" />
+  <img src="https://user-images.githubusercontent.com/41566813/124367187-28619680-dca9-11eb-8ea2-b81dcb6f666a.jpg" width="400px" />
   <h1>Do My Task</h1>
 </div>
 <div align="center">
