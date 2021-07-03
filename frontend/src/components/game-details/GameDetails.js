@@ -29,7 +29,7 @@ const GameDetails = () => {
                 </Paper>
                 <Paper className="container">
                     <Typography variant="body1" component="body1">
-                        <b>Respond by:</b> 31th of June
+                        <b>Respond by:</b> 31th of June 
                     </Typography>
                     <GameDetailsButtonContainer/>
                 </Paper>
