@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardHeader, CardContent, CardActions, Button } from '@material-ui/core';
 
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     action: {
         display: "flex",
         justifyContent: "space-between",
+        float: "right",
     },
 
     noTopBotMargin: {
@@ -68,94 +69,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TaskCard(props) {
+    const {people, setPeople, invited, id} = props
+    const [update, setUpdate] = useState(false)
     const classes = useStyles();
-    console.log(props.status)
+    // console.log(props.status)
 
-    if (props.status == "busy") {
-        return (
-            <Card className={classes.root}>
-                <CardHeader title={props.name} className={classes.header} />
-
-                <CardContent className={classes.content}>
-                    <p className={classes.noTopBotMargin}><b>Status:</b> <b className={classes.red}>{props.status}</b></p>
-                    <p className={classes.noTopBotMargin, classes.invisible}><b>Description:</b> {props.description}</p>
-                </CardContent>
-
-                <CardActions className={classes.action}>
-                    <Button className={classes.delegateBtn}>
-                        Delegate
-                    </Button>
-
-                    <Button className={classes.detailsBtn}>
-                        Invite
-                    </Button>
-                </CardActions>
-            </Card>
-        )
-
-    }
-    else if (props.status  == "available") {
-        return (
-            <Card className={classes.root}>
-                <CardHeader title={props.name} className={classes.header} />
-
-                <CardContent className={classes.content}>
-                    <p className={classes.noTopBotMargin}><b>Status:</b> <b className={classes.green}>{props.status}</b></p>
-                    <p className={classes.noTopBotMargin, classes.invisible}><b>Description:</b> {props.description}</p>
-                </CardContent>
-
-                <CardActions className={classes.action}>
-                    <Button className={classes.delegateBtn}>
-                        Delegate
-                    </Button>
-
-                    <Button className={classes.detailsBtn}>
-                    Invite
-                    </Button>
-                </CardActions>
-            </Card>
-        )
-
-    }
-    else if (props.status  === "not busy") {
-        return (
-            <Card className={classes.root}>
-                <CardHeader title={props.name} className={classes.header} />
-
-                <CardContent className={classes.content}>
-                    <p className={classes.noTopBotMargin}><b>Status:</b> <b className={classes.purple}>{props.status}</b></p>
-                    <p className={classes.noTopBotMargin, classes.invisible}><b>Description:</b> {props.description}</p>
-                </CardContent>
-
-                <CardActions className={classes.action}>
-                    <Button className={classes.delegateBtn}>
-                        Delegate
-                    </Button>
-
-                    <Button className={classes.detailsBtn}>
-                    Invite
-                    </Button>
-                </CardActions>
-            </Card>
-        )
-
-    }
     return (
         <Card className={classes.root}>
             <CardHeader title={props.name} className={classes.header} />
 
             <CardContent className={classes.content}>
-                <p className={classes.noTopBotMargin}><b>Status:</b> <b className={classes.purple}>{props.status}</b></p>
+                <p className={classes.noTopBotMargin}><b>Status:</b> <span style={{color: props.status.toLowerCase()==="busy"?"red":props.status.toLowerCase()==="available"?"green":"purple"}}>{props.status.toUpperCase()}</span></p>
                 <p className={classes.noTopBotMargin, classes.invisible}><b>Description:</b> {props.description}</p>
             </CardContent>
 
             <CardActions className={classes.action}>
-                <Button className={classes.delegateBtn}>
-                    Delegate
-                </Button>
-
-                <Button className={classes.detailsBtn}>
-                Invite
+                <Button className={classes.detailsBtn} onClick={()=>{
+                    let people_copy = people
+                    let person = people[id];
+                    person['invited'] = !person['invited']
+                    people_copy[id] = person
+                    setPeople(people_copy)
+                    props.setDummy(!props.dummy)
+                    setUpdate(!update)
+                }}>
+                    {people[id]['invited']===false?"Invite":"Cancel Invitation"}
                 </Button>
             </CardActions>
         </Card>
