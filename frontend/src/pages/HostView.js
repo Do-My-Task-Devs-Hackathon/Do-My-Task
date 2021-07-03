@@ -104,26 +104,26 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         // "padding": "2",
-        margin: "5px 5px 5px 5px",
+        margin: "5px 15px",
         "border-style": "solid",
         // borderWidth: "15px",
         borderColor: "transparent",
         backgroundColor: "#c8d8e4",
         color: "black",
         "&:hover": {
-            backgroundColor: "#f1f0ff",
+            backgroundColor: "#dbdbdb",
         },
     },
     btn2: {
         // "padding": "2",
-        margin: "5px 5px 5px 5px",
+        margin: "5px 15px",
         "border-style": "solid",
         // borderWidth: "15px",
         borderColor: "transparent",
-        backgroundColor: "#52ab98",
-        color: "black",
+        backgroundColor: "#2b6777",
+        color: "white",
         "&:hover": {
-            backgroundColor: "#f1f0ff",
+            backgroundColor: "#52ab98",
         },
     },
     invisible: {}
@@ -228,11 +228,12 @@ export default function HostView({currentTask, setCurrentTask}) {
     
     window.scrollTo(0, 0);
 
-    const submit = (ppl) => {
+    const submit = () => {
+        const ppl = people.filter(e=>e.invited===true)
         for (let i = 0; i < ppl.length; i++){
             if (ppl[i].invited === true){
                 const data = {
-                    task_id: 1, //retrieve from task's details **hard coded
+                    task_id: currentTask.id, //retrieve from task's details **hard coded
                     user_id: ppl[i].id
                 }
                 AppContextProvider.createInvitation(data)
@@ -257,11 +258,11 @@ export default function HostView({currentTask, setCurrentTask}) {
                         {/*</h1>*/}
                     </div>
                     <div style={{float:"right"}}>
+                        <Button className={classes.btn2} onClick={() => history.push("/Project-A")}>
+                            Submit
+                        </Button>
                         <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
                             Cancel
-                        </Button>
-                        <Button className={classes.btn2} onClick={() => submit(people)}>
-                            Submit
                         </Button>
                     </div>
                 </div>
