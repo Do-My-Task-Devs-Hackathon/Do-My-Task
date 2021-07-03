@@ -3,7 +3,6 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import BuildIcon from '@material-ui/icons/Build';
 import './GameDetails.css'
-import GameDetailsButtonContainer from './GameDetailsButtonContainer'
 const GameDetailsReadOnly = () => {
     const header = () => {
         return (

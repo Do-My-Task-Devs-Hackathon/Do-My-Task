@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "row",
         justifyContent: "space-between",
         color: "#ffffff",
+        minHeight: "60px",
     },
 
     content: {
