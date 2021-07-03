@@ -112,11 +112,11 @@ export default function TaskCard(props) {
                         Delegate
                     </Button>
 
-                    <Button className={classes.detailsBtn}>
+                    <Button className={classes.detailsBtn} onClick={()=>setOpenGDRO(true)}>
                         Details
                     </Button> </> :
                     <>
-                        <Button className={classes.detailsAndAcceptBtn}>
+                        <Button className={classes.detailsAndAcceptBtn} onClick={()=>setOpenGDRO(true)} >
                             View And Accept/Decline
                         </Button>
                     </>
