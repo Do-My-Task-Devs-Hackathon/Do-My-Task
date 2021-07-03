@@ -1,62 +1,94 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import './NavBar.css'
 import AuthButton from './AuthButton';
-import Tab from '@material-ui/core/Tab';
 import { makeStyles } from '@material-ui/core/styles';
+import MousepopoverClick from './MousepopoverClick';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#2b6777",
+    minHeight: "70px",
+    maxHeight: "140px",
+    padding: "1px 7%",
+  },
+
+  logoLink: {
+    height: "50px",
+    "&:hover": {
+      opacity: 0.7,
     },
-  }));
+  },
+
+  links: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    color: "white",
+  },
+
+  indiLink: {
+    marginLeft: "7px",
+    marginRight: "7px",
+    fontSize: "21px",
+    "&:hover": {
+      color: "#c8d8e4",
+      cursor: "pointer",
+    },
+  },
+
+  accIcon: {
+    marginLeft: "20px",
+    fontSize: "35px",
+    "&:hover": {
+      color: "#9c9c9c",
+    },
+  },
+
+  navMargin: {
+    height: "70px",
+  },
+}));
 
 export default function NavBar(props) {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <div className={classes.root}>
-        <AppBar className="Appbar ">
-          <a href="/" className="Logo">
-          <img src="https://user-images.githubusercontent.com/41566813/124344282-5bfadd00-dc25-11eb-8136-7542ef8916b3.png" 
-               style={{width:"200px", paddingRight:"20px", maxWidth: "30%", height: "auto"}} 
-               alt="dmtLogo"/>
-          </a>
-        <Tab label="About"/>
-          <Typography variant="h6" className="profile">
-            <PopupState variant="popover" popupId="demo-popup-popover">
-              {(popupState) => (
-                <div>
-                  <Button variant="contained" color="default" {...bindTrigger(popupState)}>
-                    <AccountCircleIcon />
-                  </Button>
-                  <Popover
-                    {...bindPopover(popupState)}
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'center',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'center',
-                    }}
-                  >
-                    <Box p={2}>
-                      <AuthButton/>
-                    </Box>
-                  </Popover>
-                </div>
-              )}
-            </PopupState>
-          </Typography>
+  const [anchorElAcc, setAnchorElAcc] = React.useState(null);
+  const handlePopoverAcc = (event) => {
+    setAnchorElAcc(event.currentTarget);
+  };
+  const handlePopoverCloseAcc = () => {
+    setAnchorElAcc(null);
+  };
+
+  return (
+    <>
+      <div className={classes.navMargin}></div>
+      <AppBar className={classes.root}>
+        <a href="/">
+          <img src="https://user-images.githubusercontent.com/41566813/124344282-5bfadd00-dc25-11eb-8136-7542ef8916b3.png"
+            alt="dmtLogo" className={classes.logoLink} />
+        </a>
+        <div className={classes.links}>
+          <a className={classes.indiLink}>Link 1</a>
+          <a className={classes.indiLink}>Link 1</a>
+          <a className={classes.indiLink}>Link 1</a>
+          <AccountCircleIcon fontSize="large" className={`${classes.indiLink} ${classes.accIcon}`} onClick={handlePopoverAcc} />
+        </div>
       </AppBar>
-      </div>
-    )
+
+      <MousepopoverClick anchorEl={anchorElAcc} handlePopoverClose={handlePopoverCloseAcc}>
+        <Box p={2}>
+          <AuthButton />
+        </Box>
+      </MousepopoverClick>
+
+
+    </>
+  )
 }

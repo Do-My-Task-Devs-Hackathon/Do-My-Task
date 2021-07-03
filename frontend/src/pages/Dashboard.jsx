@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TaskCard from '../components/TaskCard';
 import Grid from '@material-ui/core/Grid';
@@ -8,11 +8,13 @@ import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
+import AvatarCard from '../components/AvatarCard';
 import ModalWindowContainer from '../components/ModalWindowContainer'
 import CreateGame from '../components/create-game/CreateGame'
 import GameDetails from '../components/game-details/GameDetails'
 import GameDetailsReadOnly from '../components/game-details/GameDetailsReadOnly'
-
+import { useAuth0 } from "@auth0/auth0-react";
+import AppContextProvider from '../AppContextProvider.js'; 
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     invitedSection: {
         backgroundColor: "#c8d8e4",
     },
-    
+
 
     footer: {
         display: "flex",
@@ -92,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "0px 5px",
     }
 }));
+
 
 export default function Dashboard() {
     const classes = useStyles();
@@ -116,6 +119,33 @@ export default function Dashboard() {
     const [createTaskOpen, setCreateTaskOpen] = useState(false)
     const [openGDRO, setOpenGDRO] = useState(false)
     const [openGD, setOpenGD] = useState(false)
+    
+    const { user } = useAuth0();
+    const { name, email } = user;
+    const data = {
+        name: name,
+        email: email
+    }
+    // const user_id = AppContextProvider.createUser(data);
+    const [user_id, setuser_id] = useState(null)
+    useEffect(()=>{
+        AppContextProvider.createUser(data).then((res)=>{
+            setuser_id(res.data)
+            })
+        },[])
+    console.log(user_id)
+    const [importantData, setImportantData] = useState(null)
+    useEffect(()=>{
+            AppContextProvider.getAllUsers().then((res)=>{
+                setImportantData(res.data)
+            })
+        },[])
+
+    // const submitData = ()=>{
+    //     AppContextProvider.getAllUsers().then((res)=>{
+    //         setImportantData(res.data)
+    //     })
+    // }
 
 
     return (
@@ -127,9 +157,13 @@ export default function Dashboard() {
                 <div className={classes.hostHeader}>
                     <div className={classes.sectionTitle}>
                         <h1 className={classes.heading}>Members of <u>Project A</u>:</h1>
-                        <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />
                     </div>
                 </div>
+                <Grid container spacing={3}>
+                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
+                        <AvatarCard Lname="Guy" Fname="Lmao" />
+                    </Grid>
+                </Grid>
             </section>
 
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
@@ -154,7 +188,7 @@ export default function Dashboard() {
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
                 <div className={classes.sectionTitle}>
                     <h1 className={classes.heading}>Invited Tasks:</h1>
-                    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi}/>
+                    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
                     {[0,1,2,3,4].map(e=>{
