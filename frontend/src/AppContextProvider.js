@@ -8,14 +8,30 @@ class AppContextProvider {
     return data;
   }
 
-  async getTask(id) { // accepts Task's id
-      const data = await http.get("/api/tasks/find/"+id);
+  getTask(id) { // accepts Task's id
+      const data = http.get("/api/tasks/find/"+id).then(
+        (res)=>{
+          console.log(res)
+
+        }
+      );
     return data;
   }
 
   async createTask(data) { // JSON with user_id, title, description
     return http.post("/api/task/create", data);
   }
+
+  // User routes
+  async createUser(data) { // JSON with name, email, token
+    let user =await http.post("/api/user/create", data);
+    return user
+  }
+
+  async getAllUsers() { 
+    let users = await http.get("/api/user/find")
+    return users
+  } 
 
   
 

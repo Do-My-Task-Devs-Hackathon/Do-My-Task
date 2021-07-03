@@ -23,7 +23,7 @@ module.exports = (app) => {
     router.post("/create", userController.createUser);
 
     // Update User's status with user id
-    router.post("/update/status/:id", userController.updateUserStatus);
+    router.put("/update/status/:id", userController.updateUserStatus);
 
     //mount the router on the app
     app.use('/api/user', router);

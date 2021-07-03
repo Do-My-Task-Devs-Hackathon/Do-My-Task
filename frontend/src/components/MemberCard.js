@@ -117,7 +117,7 @@ export default function TaskCard(props) {
         )
 
     }
-    else if (props.status  == "not busy") {
+    else if (props.status  === "not busy") {
         return (
             <Card className={classes.root}>
                 <CardHeader title={props.name} className={classes.header} />

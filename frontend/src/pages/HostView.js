@@ -5,6 +5,7 @@
 // import { makeStyles } from '@material-ui/core/styles';
 
 import React from 'react';
+import {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MemberCard from '../components/MemberCard';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +15,9 @@ import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
 import Typography from '@material-ui/core/Typography'
+import AppContextProvider from '../AppContextProvider';
+import axios from 'axios';
+import http from "../http-common.js";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -146,6 +150,8 @@ export default function HostView() {
         setAnchorElHostInvi(null);
     };
 
+    const data = AppContextProvider.getAllTask();
+    console.log(data)
     return (
         <div>
 
@@ -221,6 +227,7 @@ export default function HostView() {
         </div>
     )
 }
+
 
 // export default function HostView2() {
 //     // const classes = useStyles();

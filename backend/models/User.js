@@ -5,14 +5,13 @@ class User extends Model {}
 
 User.init({
   // Model attributes are defined here
-  firstName: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
     
   },
-  lastName: {
+  email:{
     type: DataTypes.STRING
-    // allowNull defaults to true
   },
   token: {
     type: DataTypes.STRING

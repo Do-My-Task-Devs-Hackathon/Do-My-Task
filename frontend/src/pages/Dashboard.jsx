@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TaskCard from '../components/TaskCard';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +12,8 @@ import ModalWindowContainer from '../components/ModalWindowContainer'
 import CreateGame from '../components/create-game/CreateGame'
 import GameDetails from '../components/game-details/GameDetails'
 import GameDetailsReadOnly from '../components/game-details/GameDetailsReadOnly'
-
+import { useAuth0 } from "@auth0/auth0-react";
+import AppContextProvider from '../AppContextProvider.js'; 
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -93,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
 export default function Dashboard() {
     const classes = useStyles();
 
@@ -116,6 +118,33 @@ export default function Dashboard() {
     const [createTaskOpen, setCreateTaskOpen] = useState(false)
     const [openGDRO, setOpenGDRO] = useState(false)
     const [openGD, setOpenGD] = useState(false)
+    
+    const { user } = useAuth0();
+    const { name, email } = user;
+    const data = {
+        name: name,
+        email: email
+    }
+    // const user_id = AppContextProvider.createUser(data);
+    const [user_id, setuser_id] = useState(null)
+    useEffect(()=>{
+        AppContextProvider.createUser(data).then((res)=>{
+            setuser_id(res.data)
+            })
+        },[])
+    console.log(user_id)
+    const [importantData, setImportantData] = useState(null)
+    useEffect(()=>{
+            AppContextProvider.getAllUsers().then((res)=>{
+                setImportantData(res.data)
+            })
+        },[])
+
+    // const submitData = ()=>{
+    //     AppContextProvider.getAllUsers().then((res)=>{
+    //         setImportantData(res.data)
+    //     })
+    // }
 
 
     return (
