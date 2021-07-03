@@ -258,7 +258,7 @@ export default function HostView({currentTask, setCurrentTask}) {
                         {/*</h1>*/}
                     </div>
                     <div style={{float:"right"}}>
-                        <Button className={classes.btn2} onClick={() => history.push("/Project-A")}>
+                        <Button className={classes.btn2} onClick={() => submit()}>
                             Submit
                         </Button>
                         <Button className={classes.btn} onClick={() => history.push("/Project-A")}>

@@ -55,12 +55,13 @@ const CreateGame = ({hostedTasksArray,setHostedTasksArray, setOpen}) => {
         AppContextProvider.createTask(data).then(
             (res)=>{
                 setHostedTasksArray(hostedTasksArray.concat(res.data))
+                setOpen(false);
             }
         );
 
-        setHostedTasksArray(hostedTasksArray.concat(data))
-        AppContextProvider.createTask(data);
-        setOpen(false);
+        // setHostedTasksArray(hostedTasksArray.concat(data))
+        // AppContextProvider.createTask(data);
+        
     }
 
     const details = () => {
