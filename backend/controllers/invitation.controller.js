@@ -11,7 +11,7 @@
 
 
 
-// User  is a CLASS definition.
+// Invitation  is a CLASS definition.
 Invitation = require(__dirname + '/../models/Invitation.js');         //see /models/index.js. It builds this. We could very well require the modules/index.js file, but no - we create the database models in server.js on startup.
 const Op = require("sequelize").Op;
 
@@ -49,8 +49,43 @@ exports.getInvitation_user_id = (req,res) =>{
             res.status(500).send({
                 message: "Error retrieving Invitation with user_id = " + id
             });
-        });
+    });
 };
+
+//update invitation's status with invitation's id and accepts status and user_id  
+exports.updatInvitationStatus = (req, res) => {
+    const id = req.params.id;
+    const user_id = req.params.user_id;
+
+    
+    Invitation.update(req.body.status, {
+      where: { id: id }
+    }).then(num => {
+        if (num == 1) {
+          res.send({
+            message: `Invitation with id=${id} was updated successfully.`
+          });
+        } else {
+          res.send({
+            message: `Cannot update Invitation with id=${id}. Maybe Invitation's details was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Invitation's Details with id=" + id
+        });
+      });
+
+      Invitation.findAll({
+        where: {
+            user_id: user_id}}).then(data => {
+                console.log(data)
+            }).catch(err => {
+                console.log("Error retrieving Invitation with user_id = " + id) 
+            });
+  
+  };
 
   
 

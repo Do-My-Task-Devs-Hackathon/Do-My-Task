@@ -38,6 +38,30 @@ exports.createUser = (req,res) =>{
     
 }
 
+//update only user's status
+exports.updateUserStatus = (req, res) => {
+  const id = req.params.id;
+
+  User.update(req.body.status, {
+    where: { id: id }
+  }).then(num => {
+      if (num == 1) {
+        res.send({
+          message: `User with id=${id} was updated successfully.`
+        });
+      } else {
+        res.send({
+          message: `Cannot update User with id=${id}. Maybe User's details was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating User's Details with id=" + id
+      });
+    });
+
+};
 
 exports.getUserDetails = (req, res) => {
     res.send("probably some json with the users name & stuff");
