@@ -14,6 +14,7 @@ import CreateGame from '../components/create-game/CreateGame'
 import GameDetails from '../components/game-details/GameDetails'
 import GameDetailsReadOnly from '../components/game-details/GameDetailsReadOnly'
 
+
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: "40px",

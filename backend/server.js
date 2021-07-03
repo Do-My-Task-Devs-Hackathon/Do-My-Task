@@ -6,6 +6,8 @@ const Cors = require("cors");
 const config = require('config');
 //Create an Express object called app.
 const app = Express();
+app.use(Cors());
+
 app.Express=Express;
 
 
@@ -20,9 +22,9 @@ const PORT = isInProduction() ? 8080 : 8080;    //backend always on port 8080
 
 //CORS
 var corsOptionsJson = {
-    origin: isInProduction() ? "#" +PORT : "http://localhost" +PORT, //replace hash with production server dns
+    origin: isInProduction() ? "#" +PORT : "http://localhost:" +PORT, //replace hash with production server dns
   };
-app.use(Cors(corsOptionsJson));
+// app.use(Cors(corsOptionsJson));
 
 
 
