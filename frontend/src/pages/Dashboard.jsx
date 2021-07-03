@@ -298,13 +298,8 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                     <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
-<<<<<<< HEAD
                     {invitedCardsArray.map(e=>{
                         return(
-=======
-                    {[0, 1, 2, 3, 4].map(e => {
-                        return (
->>>>>>> 817bf7080c93e7b802009b358554debd0dc0c62c
                             <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
                                 <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host={e.host} description={e.description} />
                             </Grid>
