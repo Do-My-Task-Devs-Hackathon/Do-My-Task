@@ -13,7 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
 import MousePopover from '../components/MousePopover';
-
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -153,18 +153,26 @@ export default function HostView() {
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
                 {/* <div className={classes.hostHeader}> */}
 
-                <div className={classes.sectionTitle}>
+                <div>
                     <div>
-                        <h1 className={classes.heading}>Task: Implementing UI</h1>
-                        <h1 className={classes.heading}>
-                            <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />
-                        </h1>
+                        <Typography>
+                            <br/>
+                            <br/>
+                        </Typography>
                     </div>
-                    <div>
+                    <div style={{float:"left"}}>
+                        <Typography variant="h4">
+                            Task: Implementing UI
+                        </Typography>
+
+                        {/*<h1 className={classes.heading}>*/}
+                        {/*    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />*/}
+                        {/*</h1>*/}
+                    </div>
+                    <div style={{float:"right"}}>
                         <Button className={classes.btn} >
                             Discard
                         </Button>
-
                         <Button className={classes.btn2} >
                             Submit
                         </Button>
@@ -199,20 +207,6 @@ export default function HostView() {
                         <MemberCard name="Jinkai Zhang" status="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
                 </Grid>
-
-                <div>
-                    <Grid container spacing={3}>
-                        <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid} >
-                            <Button item lg={3} md={3} sm={6} xs={12} className={classes.btn} >
-                                Discard
-                            </Button>
-                            <Button item lg={3} md={3} sm={6} xs={12} className={classes.btn}>
-                                Submit
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </div>
-
             </section>
 
             <Footer />
