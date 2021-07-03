@@ -7,7 +7,7 @@ import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import Loading from './components/Loading'
 import React from 'react';
 import NavBar from './components/NavBar';
-
+import AppContextProvider from './AppContextProvider';
 function App() {
 
     const {isLoading} = useAuth0();
