@@ -228,11 +228,12 @@ export default function HostView({currentTask, setCurrentTask}) {
     
     window.scrollTo(0, 0);
 
-    const submit = (ppl) => {
+    const submit = () => {
+        const ppl = people.filter(e=>e.invited===true)
         for (let i = 0; i < ppl.length; i++){
             if (ppl[i].invited === true){
                 const data = {
-                    task_id: 1, //retrieve from task's details **hard coded
+                    task_id: currentTask.id, //retrieve from task's details **hard coded
                     user_id: ppl[i].id
                 }
                 AppContextProvider.createInvitation(data)
@@ -260,7 +261,7 @@ export default function HostView({currentTask, setCurrentTask}) {
                         <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
                             Cancel
                         </Button>
-                        <Button className={classes.btn2} onClick={() => submit(people)}>
+                        <Button className={classes.btn2} onClick={() => submit()}>
                             Submit
                         </Button>
                     </div>
