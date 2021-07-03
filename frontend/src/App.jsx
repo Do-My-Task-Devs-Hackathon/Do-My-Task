@@ -26,7 +26,7 @@ function App() {
       <NavBar />
       {/* <button onClick={getToken}>Gettoken</button> */}
       <Layout>
-        <Route exact path='/' component={HostView} />
+        <Route exact path='/' component={Dashboard} />
       </Layout>
     </React.Fragment>
     
