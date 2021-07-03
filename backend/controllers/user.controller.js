@@ -12,15 +12,15 @@
 
 
 // User  is a CLASS definition.
-User = require(__dirname+'/../models/User.js');         //see /models/index.js. It builds this. We could very well require the modules/index.js file, but no - we create the database models in server.js on startup.
+User = require(__dirname + '/../models/User.js');         //see /models/index.js. It builds this. We could very well require the modules/index.js file, but no - we create the database models in server.js on startup.
 const Op = require("sequelize").Op;
 
-exports.createUser = (req,res) =>{
+exports.createUser = (req, res) => {
   const user = {
-    firstName:req.body.firstName, 
+    firstName: req.body.firstName,
     lastName: req.body.lastName,
     token: req.body.token,
-    status: 0 
+    status: 0
   };
   console.log(user);
 
@@ -35,7 +35,7 @@ exports.createUser = (req,res) =>{
           err.message || "Some error occurred while creating the User."
       });
     });
-    
+
 }
 
 //update only user's status
@@ -45,16 +45,16 @@ exports.updateUserStatus = (req, res) => {
   User.update(req.body.status, {
     where: { id: id }
   }).then(num => {
-      if (num == 1) {
-        res.send({
-          message: `User with id=${id} was updated successfully.`
-        });
-      } else {
-        res.send({
-          message: `Cannot update User with id=${id}. Maybe User's details was not found or req.body is empty!`
-        });
-      }
-    })
+    if (num == 1) {
+      res.send({
+        message: `User with id=${id} was updated successfully.`
+      });
+    } else {
+      res.send({
+        message: `Cannot update User with id=${id}. Maybe User's details was not found or req.body is empty!`
+      });
+    }
+  })
     .catch(err => {
       res.status(500).send({
         message: "Error updating User's Details with id=" + id
@@ -63,29 +63,55 @@ exports.updateUserStatus = (req, res) => {
 
 };
 
+// Retrieve all Users from the database.
+exports.getAllUsers = (req, res) => {
+  User.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving users."
+      });
+    });
+};
+
 exports.getUserDetails = (req, res) => {
-    res.send("probably some json with the users name & stuff");
+  res.send("probably some json with the users name & stuff");
 };
 exports.setUserDetails = (req, res) => {
-   res.send("i should probably update the correct local DB object. remember server sets object IDs if they dont exist yet.");
+  res.send("i should probably update the correct local DB object. remember server sets object IDs if they dont exist yet.");
 };
 
 exports.logout = (req, res) => {
-    res.send("gtfo");
+  res.send("gtfo");
 };
 
 exports.loadusers = (req, res) => {
-  User.create({ firstName:"James", 
-                lastName:"LOL"});
-  User.create({ firstName:"Steven", 
-                lastName:"LOL"});
-  User.create({ firstName:"Josh", 
-                lastName:"LOL"});
-  User.create({ firstName:"Hajim", 
-                lastName:"LOL"});
-  User.create({ firstName:"Simon", 
-                lastName:"LOL"});
-  User.create({ firstName:"JinKai", 
-                lastName:"LOL"});
+  User.create({
+    firstName: "James",
+    lastName: "LOL"
+  });
+  User.create({
+    firstName: "Steven",
+    lastName: "LOL"
+  });
+  User.create({
+    firstName: "Josh",
+    lastName: "LOL"
+  });
+  User.create({
+    firstName: "Hajim",
+    lastName: "LOL"
+  });
+  User.create({
+    firstName: "Simon",
+    lastName: "LOL"
+  });
+  User.create({
+    firstName: "JinKai",
+    lastName: "LOL"
+  });
   res.send("6 users created");
 };
