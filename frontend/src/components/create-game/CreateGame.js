@@ -58,8 +58,8 @@ const CreateGame = ({hostedTasksArray,setHostedTasksArray, setOpen}) => {
             }
         );
 
-        // setHostedTasksArray(hostedTasksArray.concat(data))
-        // AppContextProvider.createTask(data);
+        setHostedTasksArray(hostedTasksArray.concat(data))
+        AppContextProvider.createTask(data);
         setOpen(false);
     }
 

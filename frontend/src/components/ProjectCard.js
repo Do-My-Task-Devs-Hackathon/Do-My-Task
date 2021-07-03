@@ -42,7 +42,7 @@ export default function ProjectCard(props) {
             <Grid item lg={3} md={3} sm={6} xs={12} className={classes.projectgrid}>
                 <Card className={classes.card} onClick={() => history.push("/Project-A")}>
                     <CardHeader className={classes.projectheader} title="Project A" />
-                    <CardContent><div>This project leads the Avengers to secure Game Of Throne.</div></CardContent>
+                    <CardContent><div>This project involves members of the team completing a website in the event of Hackathon within a time limit of 48 hours.</div></CardContent>
                 </Card>
             </Grid>
             :

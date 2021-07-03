@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Dashboard({currentTask, setCurrentTask}) {
+export default function Dashboard({ currentTask, setCurrentTask }) {
 
     const classes = useStyles();
 
@@ -153,21 +153,21 @@ export default function Dashboard({currentTask, setCurrentTask}) {
 
     // const user_id = AppContextProvider.createUser(data);
     const [foundUser, setUser] = useState(null)
-    useEffect(()=>{ //return User from database
+    useEffect(() => { //return User from database
         AppContextProvider
             .createUser(data)
-            .then((res)=>{
+            .then((res) => {
                 setUser(res.data)
-                console.log("hello",foundUser)
+                console.log("hello", foundUser)
                 AppContextProvider.findTasks_user_id(1).then((res) => {
                     console.log(res.data)
                     setHostedCardsArray(res.data)
                 })
             })
 
-        },[])
-    
-        
+    }, [])
+
+
 
     // const [importantData, setImportantData] = useState(null)
     // useEffect(()=>{
@@ -246,23 +246,23 @@ export default function Dashboard({currentTask, setCurrentTask}) {
         }
     ];
 
-    const CG = ()=>{
-        return(
+    const CG = () => {
+        return (
             <CreateGame hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} setOpen={setCreateTaskOpen} />
         )
     }
 
-    const GD = ()=>{
-        return(
+    const GD = () => {
+        return (
             <GameDetails opener={setOpenGD} />
         )
     }
 
     return (
         <div>
-            <ModalWindowContainer modalContent={GD} open={openGD} setOpen={setOpenGD}/>
-            <ModalWindowContainer modalContent={GameDetailsReadOnly} open={openGDRO} setOpen={setOpenGDRO}/>
-            <ModalWindowContainer modalContent={CG} open={createTaskOpen} setOpen={setCreateTaskOpen}/>
+            <ModalWindowContainer modalContent={GD} open={openGD} setOpen={setOpenGD} />
+            <ModalWindowContainer modalContent={GameDetailsReadOnly} open={openGDRO} setOpen={setOpenGDRO} />
+            <ModalWindowContainer modalContent={CG} open={createTaskOpen} setOpen={setCreateTaskOpen} />
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
                 <div className={classes.hostHeader}>
                     <div className={classes.sectionTitle}>
@@ -271,8 +271,8 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                 </div>
                 <Grid container spacing={3}>
                     {people.map((person) => {
-                        return(<Grid item lg={1} md={1} sm={4} xs={6} className={classes.taskGrid}>
-                            <AvatarCard Lname={person.lname} Fname={person.fname} img={person.imgSrc}/>
+                        return (<Grid item lg={1} md={1} sm={4} xs={6} className={classes.taskGrid}>
+                            <AvatarCard Lname={person.lname} Fname={person.fname} img={person.imgSrc} />
                         </Grid>);
                     })}
                 </Grid>
@@ -289,7 +289,7 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                     <Button className={classes.createBtn} onClick={() => setCreateTaskOpen(true)}><AddIcon />Create Task</Button>
                 </div>
                 <Grid container spacing={3}>
-                    {hostedCardsArray.map(e=>{
+                    {hostedCardsArray.map(e => {
                         return (<Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
                             <TaskCard hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} currentTask={currentTask} setCurrentTask={setCurrentTask} task={e} title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
                         </Grid>)
@@ -303,10 +303,10 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                     <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
-                    {invitedCardsArray.map(e=>{
-                        return(
+                    {invitedCardsArray.map(e => {
+                        return (
                             <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                                <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host={e.host} description={e.description} />
+                                <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host={e.host} description={e.description} title={e.title} />
                             </Grid>
                         )
                     })}
@@ -316,11 +316,15 @@ export default function Dashboard({currentTask, setCurrentTask}) {
             <Footer />
 
             <MousePopover anchorEl={anchorElHostHelp} handlePopoverClose={handlePopoverCloseHost}>
-                <img alt="img_logo1" src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+                <div style={{display: "flex", flexDirection: "column"}}>
+                    <img width="400px" alt="img_logo1" src="https://user-images.githubusercontent.com/68091892/124366857-e6cfec00-dca6-11eb-82db-ec6fd028b75d.png" />
+                    <br/>
+                    <img width="400px" alt="img_logo1" src="https://user-images.githubusercontent.com/68091892/124366779-51ccf300-dca6-11eb-972d-28ced7795574.png" />
+                </div>
             </MousePopover>
 
-            <MousePopover anchorEl={anchorElHostInvi} handlePopoverClose={handlePopoverCloseInvi}>
-                <img alt="img_logo2" src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+            <MousePopover anchorEl={anchorElHostInvi} handlePopoverClose={handlePopoverCloseInvi} style={{ width: "auto" }}>
+                <img width="550px" alt="img_logo2" src="https://user-images.githubusercontent.com/68091892/124366681-8be9c500-dca5-11eb-8c46-f7880611a5f9.png" />
             </MousePopover>
         </div>
     )

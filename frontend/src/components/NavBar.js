@@ -76,8 +76,8 @@ export default function NavBar(props) {
         </a>
         <div className={classes.links}>
           <a className={classes.indiLink}>Link 1</a>
-          <a className={classes.indiLink}>Link 1</a>
-          <a className={classes.indiLink}>Link 1</a>
+          <a className={classes.indiLink}>Link 2</a>
+          <a className={classes.indiLink}>Link 3</a>
           <AccountCircleIcon fontSize="large" className={`${classes.indiLink} ${classes.accIcon}`} onClick={handlePopoverAcc} />
         </div>
       </AppBar>

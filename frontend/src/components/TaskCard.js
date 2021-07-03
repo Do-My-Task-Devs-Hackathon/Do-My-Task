@@ -115,11 +115,11 @@ export default function TaskCard(props) {
 
                 <h1 className={classes.cardTitle}>{title}</h1>
 
-                {!props.isInvitation ? <RemoveCircleIcon onClick={() => dlt()} onclassName={classes.closeIcon}/> : <></>}
+                {!props.isInvitation ? <RemoveCircleIcon onClick={() => dlt()} className={classes.closeIcon}/> : <></>}
             </header>
 
             <CardContent className={classes.content}>
-                <p className={classes.noTopBotMargin}><b>Host:</b> {props.host}</p>
+                {/* <p className={classes.noTopBotMargin}><b>Host:</b> {props.host}</p> */}
                 <p className={classes.noTopBotMargin}><b>Description:</b> {props.description}</p>
             </CardContent>
 
