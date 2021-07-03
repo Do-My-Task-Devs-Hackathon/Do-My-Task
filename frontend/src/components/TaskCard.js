@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#f2f2f2",
         }
     },
-    
+
     cardTitle: {
         flexGrow: 1,
     },
@@ -94,7 +94,7 @@ export default function TaskCard(props) {
 
                 <h1 className={classes.cardTitle}>Task title</h1>
 
-                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon}/> : <></>}
+                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon} /> : <></>}
             </header>
 
             <CardContent className={classes.content}>
