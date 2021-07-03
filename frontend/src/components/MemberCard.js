@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
 
     header: {
         textAlign: "center",
-        backgroundColor: "#5eff74"
+        backgroundColor: "#2b6777",
+        // backgroundColor: " #387366",
+        // backgroundColor: "#52ab98 ",
+        color:"#f2f2f2"
     },
 
     content: {
@@ -42,10 +45,11 @@ const useStyles = makeStyles((theme) => ({
     },
 
     detailsBtn: {
-        backgroundColor: "#d7d4ff",
+        backgroundColor: "#c8d8e4",
+        color: "black",
         "&:hover": {
-            backgroundColor: "#e5e3ff",
-        }
+            backgroundColor:"#f1f0ff",
+        },
     },
 
     red: {

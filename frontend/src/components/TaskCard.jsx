@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 
     header: {
         textAlign: "center",
-        backgroundColor: "#5eff74"
+        backgroundColor: "#c8d8e4"
     },
 
     content: {

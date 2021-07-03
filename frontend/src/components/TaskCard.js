@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
 
     header: {
         textAlign: "center",
-        backgroundColor: "#5eff74"
+        backgroundColor: "#2b6777",
+        // backgroundColor: "#52ab98",
+        color:"#f2f2f2"
     },
 
     content: {
@@ -29,17 +31,17 @@ const useStyles = makeStyles((theme) => ({
     },
 
     delegateBtn: {
-        backgroundColor: "blue",
-        color: "white",
+        backgroundColor: "#c8d8e4",
+        color: "black",
         "&:hover": {
-            backgroundColor: "#8478ff",
+            backgroundColor:"#f1f0ff",
         },
     },
 
     detailsBtn: {
-        backgroundColor: "#d7d4ff",
+        backgroundColor: "#d4d4d4",
         "&:hover": {
-            backgroundColor: "#e5e3ff",
+            backgroundColor: "#f2f2f2",
         }
     },
 }));

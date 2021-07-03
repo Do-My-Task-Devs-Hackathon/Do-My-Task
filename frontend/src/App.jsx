@@ -1,11 +1,12 @@
 import './App.css';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 import HostView from './pages/HostView';
 import { Layout } from './Layout';
 import { Route } from 'react-router';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from './components/Loading'
 import AuthButton from './components/AuthButton';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
