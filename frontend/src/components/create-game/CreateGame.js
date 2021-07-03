@@ -15,9 +15,17 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#2b6777",
         color: "white",
     },
+
+    defaultColorBtn: {
+        backgroundColor: "#2b6777",
+        color: "white",
+        "&:hover": {
+            backgroundColor: "#52ab98",
+        }
+    },
 }));
 
-const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
+const CreateGame = ({hostedTasksArray,setHostedTasksArray, setOpen}) => {
     const classes = useStyles();
     const header = () => {
         return (
@@ -50,6 +58,9 @@ const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
             }
         );
 
+        // setHostedTasksArray(hostedTasksArray.concat(data))
+        // AppContextProvider.createTask(data);
+        setOpen(false);
     }
 
     const details = () => {
@@ -78,7 +89,7 @@ const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
                     />
                 </div>
                 <div style={{ textAlign: "right", paddingTop: "10px", paddingBottom: "10px" }}>
-                    <Button className={classes.defaultColor} onClick={send}>Create</Button>
+                    <Button className={classes.defaultColorBtn} onClick={send}>Create</Button>
                 </div>
             </Paper>
         )

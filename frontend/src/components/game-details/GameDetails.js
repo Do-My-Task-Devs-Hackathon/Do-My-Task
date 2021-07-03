@@ -4,7 +4,8 @@ import Typography from '@material-ui/core/Typography'
 import BuildIcon from '@material-ui/icons/Build';
 import './GameDetails.css'
 import GameDetailsButtonContainer from './GameDetailsButtonContainer'
-const GameDetails = () => {
+const GameDetails = ({opener}) => {
+    
     const header = () => {
         return (
             <Paper className="container header">
@@ -19,7 +20,7 @@ const GameDetails = () => {
         )
     }
 
-    const details = () => {
+    const details = (opener1) => {
         return (
             <>
                 <Paper className="container">
@@ -31,7 +32,7 @@ const GameDetails = () => {
                     <Typography variant="body1" component="body1">
                         <b>Respond by:</b> 31th of June 
                     </Typography>
-                    <GameDetailsButtonContainer/>
+                    <GameDetailsButtonContainer setOpen={opener1}/>
                 </Paper>
             </>
 
@@ -40,7 +41,7 @@ const GameDetails = () => {
     return (
         <>
             {header()}
-            {details()}
+            {details(opener)}
         </>
 
     )

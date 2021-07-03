@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "auto",
         padding: "10px",
         "&:hover": {
-            backgroundColor: "#547e8a",
+            backgroundColor: "#52ab98",
         }
     },
 
@@ -248,12 +248,19 @@ export default function Dashboard({currentTask, setCurrentTask}) {
 
     const CG = ()=>{
         return(
-            <CreateGame hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} />
+            <CreateGame hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} setOpen={setCreateTaskOpen} />
         )
     }
+
+    const GD = ()=>{
+        return(
+            <GameDetails opener={setOpenGD} />
+        )
+    }
+
     return (
         <div>
-            <ModalWindowContainer modalContent={GameDetails} open={openGD} setOpen={setOpenGD}/>
+            <ModalWindowContainer modalContent={GD} open={openGD} setOpen={setOpenGD}/>
             <ModalWindowContainer modalContent={GameDetailsReadOnly} open={openGDRO} setOpen={setOpenGDRO}/>
             <ModalWindowContainer modalContent={CG} open={createTaskOpen} setOpen={setCreateTaskOpen}/>
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
@@ -264,8 +271,6 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                 </div>
                 <Grid container spacing={3}>
                     {people.map((person) => {
-                        console.log(person.lname);
-                        console.log(person.fname);
                         return(<Grid item lg={1} md={1} sm={4} xs={6} className={classes.taskGrid}>
                             <AvatarCard Lname={person.lname} Fname={person.fname} img={person.imgSrc}/>
                         </Grid>);

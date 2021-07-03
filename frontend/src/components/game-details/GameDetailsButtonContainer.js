@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const GameDetailsButtonContainer = ()=>{
+const GameDetailsButtonContainer = ({setOpen})=>{
     const classes = useStyles();
     return (
         <div style={{textAlign: "right", paddingTop: "10px", paddingBottom: "10px"}}>
-            <Button className={classes.acceptBtn}>Accept</Button>
-            <Button className={classes.declineBtn}>Decline</Button>
+            <Button className={classes.acceptBtn} onClick={() => setOpen(false)}>Accept</Button>
+            <Button className={classes.declineBtn} onClick={() => setOpen(false)}>Decline</Button>
         </div>
     )
 }
