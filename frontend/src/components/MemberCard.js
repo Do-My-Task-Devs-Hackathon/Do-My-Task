@@ -4,7 +4,7 @@ import { Card, CardHeader, CardContent, CardActions, Button } from '@material-ui
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "345px",
+        width: "320px",
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
     },
 
