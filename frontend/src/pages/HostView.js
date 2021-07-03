@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "40px",
     },
 
-    hostHeader: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
+    // hostHeader: {
+    //     display: "flex",
+    //     flexDirection: "row",
+    //     justifyContent: "space-between",
+    // },
 
     createBtn: {
         backgroundColor: "#2b6777",
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "space-evenly"
     },
 
     helpIcon: {
@@ -67,10 +68,15 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "100%",
     },
 
+    btnGrid: {
+        maxWidth: "100%",
+        padding: "central",
+    },
+
     invitedSection: {
         backgroundColor: "#c8d8e4",
     },
-    
+
 
     footer: {
         display: "flex",
@@ -91,6 +97,33 @@ const useStyles = makeStyles((theme) => ({
         height: "30px",
         alignSelf: "center",
         margin: "0px 5px",
+    },
+    btn: {
+        // "padding": "2",
+        margin: "5px 5px 5px 5px",
+        "border-style": "solid",
+        // borderWidth: "15px",
+        borderColor: "transparent",
+        backgroundColor: "#c8d8e4",
+        color: "black",
+        "&:hover": {
+            backgroundColor: "#f1f0ff",
+        },
+    },
+    btn2: {
+        // "padding": "2",
+        margin: "5px 5px 5px 5px",
+        "border-style": "solid",
+        // borderWidth: "15px",
+        borderColor: "transparent",
+        backgroundColor: "#52ab98",
+        color: "black",
+        "&:hover": {
+            backgroundColor: "#f1f0ff",
+        },
+    },
+    invisible: {
+
     }
 }));
 
@@ -118,40 +151,68 @@ export default function HostView() {
 
 
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
-                <div className={classes.hostHeader}>
-                    <div className={classes.sectionTitle}>
+                {/* <div className={classes.hostHeader}> */}
+
+                <div className={classes.sectionTitle}>
+                    <div>
                         <h1 className={classes.heading}>Task: Implementing UI</h1>
-                        <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />
+                        <h1 className={classes.heading}>
+                            <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />
+                        </h1>
                     </div>
+                    <div>
+                        <Button className={classes.btn} >
+                            Discard
+                        </Button>
 
-
-                    {/* <Button className={classes.createBtn}><AddIcon />Create Task</Button> */}
+                        <Button className={classes.btn2} >
+                            Submit
+                        </Button>
+                    </div>
                 </div>
+
+
+                {/* <Button className={classes.createBtn}><AddIcon />Create Task</Button> */}
+                {/* </div> */}
                 <Grid container spacing={3}>
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="Josh Xi" status ="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="Josh Xi" status="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
 
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="Simon Cheng" status ="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="Simon Cheng" status="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
 
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="Hajin Kim" status ="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="Hajin Kim" status="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
 
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="Kan Qi Wen" status ="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="Kan Qi Wen" status="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
 
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="James You" status ="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="James You" status="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
 
                     <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name ="Jinkai Zhang" status ="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                        <MemberCard name="Jinkai Zhang" status="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
                     </Grid>
                 </Grid>
+
+                <div>
+                    <Grid container spacing={3}>
+                        <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid} >
+                            <Button item lg={3} md={3} sm={6} xs={12} className={classes.btn} >
+                                Discard
+                            </Button>
+                            <Button item lg={3} md={3} sm={6} xs={12} className={classes.btn}>
+                                Submit
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </div>
+
             </section>
 
             <Footer />
@@ -172,7 +233,7 @@ export default function HostView() {
 //     const classes = useStyles();
 //     return (
 
-        
+
 //         <div className={classes.hostedSection}> 
 //             <h1>Task: Implementing UI</h1>
 //             {/* <h2>Hosted Tasks:</h2> */}
