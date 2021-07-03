@@ -1,4 +1,4 @@
-import CommonButton from './CommonButton'
+import CommonButton from '../CommonButton'
 
 const CreateGameButtonContainer = ()=>{
     return (

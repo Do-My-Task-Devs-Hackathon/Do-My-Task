@@ -1,4 +1,4 @@
-import CreateGame from '../components/CreateGame'
+import CreateGame from '../components/create-game/CreateGame'
 import './TestPage.css'
 const TestPage = ()=>{
     return (
