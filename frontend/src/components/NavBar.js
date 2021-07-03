@@ -8,7 +8,6 @@ import Popover from '@material-ui/core/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import './NavBar.css'
 import AuthButton from './AuthButton';
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -30,9 +29,7 @@ export default function NavBar(props) {
                   style={{width:"200px", paddingRight:"20px"}} 
                   alt="dmtLogo"/>
           </a>
-          <Tabs>
-            <Tab label="About"/>
-          </Tabs>
+        <Tab label="About"/>
           <Typography variant="h6" className="profile">
             <PopupState variant="popover" popupId="demo-popup-popover">
               {(popupState) => (
