@@ -31,8 +31,14 @@ const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
             "description": description,
         }
         console.log(data)
-        setHostedTasksArray(hostedTasksArray.concat(data))
-        AppContextProvider.createTask(data);
+
+        
+        AppContextProvider.createTask(data).then(
+            (res)=>{
+                setHostedTasksArray(hostedTasksArray.concat(res.data))
+            }
+        );
+
     }
 
     const details = () => {

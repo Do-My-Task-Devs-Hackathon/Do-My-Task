@@ -7,6 +7,7 @@ import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Tooltip from '@material-ui/core/Tooltip';
 import ModalWindowContainer from './ModalWindowContainer'
+import AppContextProvider from '../AppContextProvider';
 import { useHistory } from 'react-router';
 import {
     BrowserRouter as Router,
@@ -95,10 +96,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TaskCard(props) {
     const classes = useStyles();
-    const {task, currentTask, setCurrentTask,title, setOpenGDRO, setOpenGD} = props;
+    const {task, hostedTasksArray, setHostedTasksArray, currentTask, setCurrentTask,title, setOpenGDRO, setOpenGD} = props;
     let match = useRouteMatch();
     const history = useHistory();
-
+    console.log(task)
+    const dlt = () => {
+        AppContextProvider.deleteTask(task.id);
+        console.log(hostedTasksArray)
+        const copy = hostedTasksArray.filter(e => e.id !==task.id)
+        setHostedTasksArray(copy)
+    }
     return (
         <Card className={classes.root}>
             <header className={classes.header}>
@@ -107,7 +114,7 @@ export default function TaskCard(props) {
 
                 <h1 className={classes.cardTitle}>{title}</h1>
 
-                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon}/> : <></>}
+                {!props.isInvitation ? <RemoveCircleIcon onClick={() => dlt()} onclassName={classes.closeIcon}/> : <></>}
             </header>
 
             <CardContent className={classes.content}>

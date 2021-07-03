@@ -129,7 +129,27 @@ export default function Dashboard({currentTask, setCurrentTask}) {
     }
 
     const [hostedCardsArray, setHostedCardsArray] = useState([])
-    const [invitedCardsArray, setInvitedCardsArray] = useState([])
+    const invitedCardsArray = [
+        {
+            title: "Machine Learning",
+            id: 1,
+            host: "Alan Turing",
+            description: "Machine learning (ML) is the study of computer algorithms that improve automatically through experience and by the use of data."
+        },
+        {
+            title: "General Relativity ",
+            id: 2,
+            host: "Albert Einstein",
+            description: "The theory of general relativity says that the observed gravitational effect between masses results from their warping of spacetime."
+        },
+        {
+            title: "Law of Gravitational",
+            id: 3,
+            host: "Issac Newtow",
+            description: "Newton's law of gravitation, statement that any particle of matter in the universe attracts any other with a force varying directly as the product of the masses and inversely as the square of the distance between them."
+        }
+
+    ]
 
     // const user_id = AppContextProvider.createUser(data);
     const [foundUser, setUser] = useState(null)
@@ -199,7 +219,7 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                 <Grid container spacing={3}>
                     {hostedCardsArray.map(e=>{
                         return (<Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                            <TaskCard currentTask={currentTask} setCurrentTask={setCurrentTask} task={e} title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
+                            <TaskCard hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} currentTask={currentTask} setCurrentTask={setCurrentTask} task={e} title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
                         </Grid>)
                     })}
                 </Grid>
@@ -211,10 +231,10 @@ export default function Dashboard({currentTask, setCurrentTask}) {
                     <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenInvi} onMouseLeave={handlePopoverCloseInvi} />
                 </div>
                 <Grid container spacing={5}>
-                    {[0,1,2,3,4].map(e=>{
+                    {invitedCardsArray.map(e=>{
                         return(
                             <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                                <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                                <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} isInvitation={true} host={e.host} description={e.description} />
                             </Grid>
                         )
                     })}

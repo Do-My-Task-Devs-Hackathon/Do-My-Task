@@ -24,6 +24,7 @@ exports.createTask = (req, res) => {
   // Save Task in the database
   Task.create(task)
     .then(data => {
+      console.log(data)
       res.send(data);
     })
     .catch(err => {
