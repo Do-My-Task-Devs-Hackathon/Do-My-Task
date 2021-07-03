@@ -35,3 +35,19 @@ exports.setUserDetails = (req, res) => {
 exports.logout = (req, res) => {
     res.send("gtfo");
 };
+
+exports.loadusers = (req, res) => {
+  User.create({ firstName:"James", 
+                lastName:"LOL"});
+  User.create({ firstName:"Steven", 
+                lastName:"LOL"});
+  User.create({ firstName:"Josh", 
+                lastName:"LOL"});
+  User.create({ firstName:"Hajim", 
+                lastName:"LOL"});
+  User.create({ firstName:"Simon", 
+                lastName:"LOL"});
+  User.create({ firstName:"JinKai", 
+                lastName:"LOL"});
+  res.send("6 users created");
+};

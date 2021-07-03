@@ -109,3 +109,19 @@ exports.deleteTask = (req, res) => {
       });
     });
 };
+
+exports.loadtasks = (req, res) => {
+  Task.create({ title:"Frontend", 
+                total_user: 6});
+  Task.create({ title:"Backend", 
+                total_user: 5});
+  Task.create({ title:"Server", 
+                total_user: 8});
+  Task.create({ title:"database", 
+                total_user: 4});
+  Task.create({ title:"Framework", 
+                total_user: 8});
+  Task.create({ title:"Design", 
+                total_user: 10});
+  res.send("6 Tasks created");
+};
