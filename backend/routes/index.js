@@ -14,10 +14,11 @@
 
 module.exports = (app) => {
   //Pull in other JS files to mount their routes to
-  require(__dirname+"/task.routes.js")(app);
-  require(__dirname+"/user.routes.js")(app); 
+  require(__dirname + "/task.routes.js")(app);
+  require(__dirname + "/user.routes.js")(app);
+  require(__dirname + "/invitation.routes.js")(app);
 }
 
 
 
- 
+

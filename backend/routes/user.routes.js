@@ -12,21 +12,15 @@ module.exports =(app) => {
         const userController = require("../controllers/user.controller.js"); //instantiating a new object
         var router = require("express").Router();       // a NEW 'Router' object. Gets globally configured to live under '/api/courses'. see blow.
       
-        // Login
-        router.post("/login", userController.login);
-      
         
-        // Retrieve a single Course with id
-        router.get("/logout", userController.logout);
+        // Load value (testing purpose)
+        router.get("/load", userController.loadusers);
         
+        // Create User with firstName, lastName, and token
+        router.post("/create", userController.createUser);
 
-        
-        // Retrieve user details (my name, etc)
-        router.get("/details", userController.getUserDetails);
-        
-        
-        // Change my name & stuff.
-        router.post("/details", userController.setUserDetails);
+        // Update User's status with user id
+        router.post("/update/status/:id", userController.updateUserStatus);
         
         //mount the router on the app
         app.use('/api/user', router);
