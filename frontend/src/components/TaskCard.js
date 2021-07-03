@@ -126,7 +126,7 @@ export default function TaskCard(props) {
                             Details
                         </Button> </> :
                     <>
-                        <Button className={classes.detailsAndAcceptBtn} onClick={() => setOpenGDRO(true)}>
+                        <Button className={classes.detailsAndAcceptBtn} onClick={() => setOpenGD(true)}>
                             View And Accept/Decline
                         </Button>
                     </>

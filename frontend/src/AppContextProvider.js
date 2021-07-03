@@ -13,8 +13,8 @@ class AppContextProvider {
     return data;
   }
 
-  async create(data) { // JSON with user_id, title, description
-    return http.post("/api/tasks/create", data);
+  async createTask(data) { // JSON with user_id, title, description
+    return http.post("/api/task/create", data);
   }
 
   
