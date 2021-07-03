@@ -40,7 +40,7 @@ const ModalWindowContainer = ({modalContent}) => {
                                     <CancelIcon fontSize="large" onClick={handleClose}/>}
                             </div>
                         </div>
-                        
+
                         {modalContent()}
 
                     </div>
