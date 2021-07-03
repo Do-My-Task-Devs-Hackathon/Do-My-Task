@@ -36,7 +36,7 @@ export default function AvatarCard(props) {
     return (
         <Card className={classes.root}>
             <Avatar className={classes.img} src={props.img}>{fname.charAt(0).toUpperCase() + lname.charAt(0).toUpperCase()}</Avatar>
-            <p className={classes.paragraph}>{fname + " " + lname}</p>
+            <p className={classes.paragraph}>{fname + "." + lname.charAt(0).toUpperCase()}</p>
         </Card>
     )
 }

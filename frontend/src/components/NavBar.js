@@ -75,9 +75,8 @@ export default function NavBar(props) {
             alt="dmtLogo" className={classes.logoLink} />
         </a>
         <div className={classes.links}>
-          <a className={classes.indiLink}>Link 1</a>
-          <a className={classes.indiLink}>Link 2</a>
-          <a className={classes.indiLink}>Link 3</a>
+          <a className={classes.indiLink}>Projects</a>
+          <a className={classes.indiLink}>Home</a>
           <AccountCircleIcon fontSize="large" className={`${classes.indiLink} ${classes.accIcon}`} onClick={handlePopoverAcc} />
         </div>
       </AppBar>
