@@ -4,11 +4,11 @@
 // import MemberCardGrid from '../components/MemberCardGrid';
 // import { makeStyles } from '@material-ui/core/styles';
 
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import MemberCard from '../components/MemberCard';
 import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import HelpIcon from '@material-ui/icons/Help';
 import Footer from '../components/Footer';
@@ -122,14 +122,69 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#f1f0ff",
         },
     },
-    invisible: {
-
-    }
+    invisible: {}
 }));
 
-export default function HostView() {
-    const classes = useStyles();
 
+export default function HostView() {
+    const [people, setPeople] = useState([
+        {
+            invited: false,
+            id: 0,
+            name: "Josh Xi",
+            status: "busy",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000.",
+        },
+        {
+            invited: false,
+            id: 1,
+            name: "Simon Cheng",
+            status: "busy",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000.",
+        },
+        {
+            invited: false,
+            id: 2,
+            name: "Hajin Kim",
+            status: "available",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000.",
+        },
+        {
+            invited: false,
+            id: 3,
+            name: "Kan Qi Wen",
+            status: "available",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000."
+        },
+        {
+            invited: false,
+            id: 4,
+            name: "James You",
+            status: "not busy",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000."
+        },
+        {
+            invited: false,
+            id: 5,
+            name: "Jinkai Zhang",
+            status: "not busy",
+            host: "Weak af guy who can't finish this task alone",
+            description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000."
+        }
+    ])
+
+
+    const classes = useStyles();
+    const getPeopleToInvite = (ppl) => {
+        return ppl.filter(e => e.invited === true).map(e => e.name).join(', ')
+    }
+
+    const [update, setUpdate] = useState(false)
     const [anchorElHostHelp, setAnchorElHostHelp] = React.useState(null);
     const handlePopoverOpenHost = (event) => {
         setAnchorElHostHelp(event.currentTarget);
@@ -148,8 +203,6 @@ export default function HostView() {
 
     return (
         <div>
-
-
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
                 {/* <div className={classes.hostHeader}> */}
 
@@ -160,7 +213,7 @@ export default function HostView() {
                             <br/>
                         </Typography>
                     </div>
-                    <div style={{float:"left"}}>
+                    <div style={{float: "left"}}>
                         <Typography variant="h4">
                             Task: Implementing UI
                         </Typography>
@@ -169,54 +222,47 @@ export default function HostView() {
                         {/*    <HelpIcon className={classes.helpIcon} onMouseEnter={handlePopoverOpenHost} onMouseLeave={handlePopoverCloseHost} />*/}
                         {/*</h1>*/}
                     </div>
-                    <div style={{float:"right"}}>
-                        <Button className={classes.btn} >
-                            Discard
+                    <div style={{float: "right"}}>
+                        <Button className={classes.btn}>
+                            Go Back
                         </Button>
-                        <Button className={classes.btn2} >
+                        <Button className={classes.btn2}>
                             Submit
                         </Button>
                     </div>
+                </div>
+                <div style={{clear: "both"}}>
+                    <Typography variant="body1">
+
+                        Send Invitation to: {getPeopleToInvite(people)}
+                        {update?"":""}
+                        <br/>
+                    </Typography>
                 </div>
 
 
                 {/* <Button className={classes.createBtn}><AddIcon />Create Task</Button> */}
                 {/* </div> */}
                 <Grid container spacing={3}>
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="Josh Xi" status="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="Simon Cheng" status="busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="Hajin Kim" status="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="Kan Qi Wen" status="available" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="James You" status="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
-
-                    <Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                        <MemberCard name="Jinkai Zhang" status="not busy" host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
-                    </Grid>
+                    {people.map(e => {
+                        return <Grid item lg={3} md={3} sm={6} xs={12} key={e.id} className={classes.taskGrid}>
+                            <MemberCard name={e.name} status={e.status} host={e.host} description={e.description}
+                                        id={e.id} invited={e.invited} people={people} setPeople={setPeople} dummy={update} setDummy={setUpdate}/>
+                        </Grid>
+                    })}
                 </Grid>
             </section>
 
-            <Footer />
+            <Footer/>
 
             <MousePopover anchorEl={anchorElHostHelp} handlePopoverClose={handlePopoverCloseHost}>
-                <img src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+                <img
+                    src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png"/>
             </MousePopover>
 
             <MousePopover anchorEl={anchorElHostInvi} handlePopoverClose={handlePopoverCloseInvi}>
-                <img src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png" />
+                <img
+                    src="https://user-images.githubusercontent.com/41566813/124340855-4cbb6580-dc0c-11eb-8979-2cbb5882bfb0.png"/>
             </MousePopover>
         </div>
     )
@@ -231,9 +277,9 @@ export default function HostView() {
 //         <div className={classes.hostedSection}> 
 //             <h1>Task: Implementing UI</h1>
 //             {/* <h2>Hosted Tasks:</h2> */}
-            // <section>
-            //     <MemberCardGrid> this</MemberCardGrid>
-            // </section>
+// <section>
+//     <MemberCardGrid> this</MemberCardGrid>
+// </section>
 //             {/* <h2>Invited Tasks</h2> */}
 //             <section>
 
