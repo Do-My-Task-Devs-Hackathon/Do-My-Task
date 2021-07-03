@@ -96,7 +96,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Dashboard() {
+export default function Dashboard({currentTask, setCurrentTask}) {
+
     const classes = useStyles();
 
     const [anchorElHostHelp, setAnchorElHostHelp] = React.useState(null);
@@ -198,7 +199,7 @@ export default function Dashboard() {
                 <Grid container spacing={3}>
                     {hostedCardsArray.map(e=>{
                         return (<Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                            <TaskCard title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
+                            <TaskCard currentTask={currentTask} setCurrentTask={setCurrentTask} task={e} title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
                         </Grid>)
                     })}
                 </Grid>

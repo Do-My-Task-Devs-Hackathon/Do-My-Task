@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TaskCard(props) {
     const classes = useStyles();
-    const {title, setOpenGDRO, setOpenGD} = props;
+    const {task, currentTask, setCurrentTask,title, setOpenGDRO, setOpenGD} = props;
     let match = useRouteMatch();
     const history = useHistory();
 
@@ -117,7 +117,7 @@ export default function TaskCard(props) {
 
             <CardActions className={classes.action}>
                 {!props.isInvitation ? <>
-                            <Button onClick={() => history.push("/delegate")} className={classes.delegateBtn}>
+                            <Button onClick={() => {history.push("/delegate");setCurrentTask(task);console.log(task)}} className={classes.delegateBtn}>
                                 Delegate
                             </Button>
 

@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function HostView() {
+export default function HostView({currentTask, setCurrentTask}) {
     const [people, setPeople] = useState([
         {
             invited: false,
@@ -217,7 +217,7 @@ export default function HostView() {
                 <div>
                     <div style={{float:"left"}}>
                         <Typography variant="h4">
-                            Task: Implementing UI
+                            <b>Task: </b>{currentTask.title?currentTask.title:"not here yet"}
                         </Typography>
 
                         {/*<h1 className={classes.heading}>*/}
