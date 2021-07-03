@@ -127,19 +127,26 @@ export default function Dashboard() {
         email: email
     }
     // const user_id = AppContextProvider.createUser(data);
-    const [user_id, setuser_id] = useState(null)
-    useEffect(()=>{
+    const [foundUser, setUser] = useState(null)
+    useEffect(()=>{ //return User from database
         AppContextProvider.createUser(data).then((res)=>{
-            setuser_id(res.data)
+            setUser(res.data)
             })
         },[])
-    console.log(user_id)
-    const [importantData, setImportantData] = useState(null)
-    useEffect(()=>{
-            AppContextProvider.getAllUsers().then((res)=>{
-                setImportantData(res.data)
+    
+        
+    useEffect(()=>{ //find all tasks related to the user_id
+        AppContextProvider.findTasks_user_id(1).then((res)=>{
+            console.log(res.data)
             })
         },[])
+    // const [importantData, setImportantData] = useState(null)
+    // useEffect(()=>{
+    //         AppContextProvider.getAllUsers().then((res)=>{
+    //             setImportantData(res.data)
+    //             console.log(res.data)
+    //         })
+    //     },[])
 
     // const submitData = ()=>{
     //     AppContextProvider.getAllUsers().then((res)=>{

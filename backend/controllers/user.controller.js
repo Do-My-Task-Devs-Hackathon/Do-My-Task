@@ -18,38 +18,37 @@ const Op = require("sequelize").Op;
 exports.createUser = (req, res) => {
 
   const user_id = req.params.id;
-  const result = null
+  var result = null
   User.findAll({
       where: {
           email: req.body.email}}).then(data => {
             result = data
+            if (result.length === 0){
+              const user = {
+                name: req.body.name,
+                email: req.body.email,
+                status: 0
+              };
+              console.log(user);
+              
+              // Save User in the database
+              User.create(user)
+                .then(data => {
+                  res.send(data);
+                })
+                .catch(err => {
+                  res.status(500).send({
+                    message:
+                      err.message || "Some error occurred while creating the User."
+                  });
+                });
+            }
+            else{
+              res.send(result[0]);
+            }
           }).catch(err => {
-            console.log("error")
+            console.log("error from createUser", err)
           });
-  if (result === []){
-    const user = {
-      name: req.body.name,
-      email: req.body.email,
-      status: 0
-    };
-    console.log(user);
-  
-    // Save User in the database
-    User.create(user)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the User."
-        });
-      });
-  }
-  else{
-    res.send(result);
-  }
-  
 
 }
 

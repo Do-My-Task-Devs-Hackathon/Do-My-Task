@@ -22,6 +22,11 @@ class AppContextProvider {
     return http.post("/api/task/create", data);
   }
 
+  async findTasks_user_id(id) { // accepts user ID
+    let tasks =await http.get("/api/task/find/user/" + id);
+    return tasks
+  }
+
   // User routes
   async createUser(data) { // JSON with name, email, token
     let user =await http.post("/api/user/create", data);
