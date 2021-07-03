@@ -11,15 +11,12 @@ if (config.util.getEnv('NODE_ENV') == 'test') {
 
 //ASSOCIATION
 
-// Invitation
-// User.belongsToMany(Task, { through: 'Invitation' });
-// Task.belongsToMany(User, { through: 'Invitation' });
 
-// // 
-// User.hasMany(Task, {
-//     foreignKey: 'host_id'
-// });
-// Task.belongsTo(User);
+global.db.users.Task = global.db.users.hasMany(global.db.tasks);
+
+
+global.db.users.belongsToMany(global.db.tasks, { through: 'Invitation' });
+global.db.tasks.belongsToMany(global.db.users, { through: 'Invitation' });
 
 
 // global.db.sync({ force: true }); // This creates the table, dropping it first if it already existed (might need to remove)
