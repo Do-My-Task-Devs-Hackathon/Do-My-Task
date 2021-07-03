@@ -22,6 +22,16 @@ class AppContextProvider {
     return http.post("/api/task/create", data);
   }
 
+  async findTasks_user_id(id) { // accepts user ID
+    let tasks =await http.get("/api/task/find/user/" + id);
+    return tasks
+  }
+
+  async deleteTask(id){ //task's id
+    let task =await http.delete("/api/task/delete/" + id);
+    return task
+  }
+
   // User routes
   async createUser(data) { // JSON with name, email, token
     let user =await http.post("/api/user/create", data);
@@ -32,6 +42,17 @@ class AppContextProvider {
     let users = await http.get("/api/user/find")
     return users
   } 
+
+  // Invitation routes
+  async createInvitation(data) { // JSON with task_id, user_id
+    let invitation =await http.post("/api/invitation/create/", data);
+    return invitation
+  }
+
+  async findInvitation_user_id(id) { // accepts user ID
+    let tasks =await http.get("/api/invitation/find/user/" + id);
+    return tasks
+  }
 
   
 

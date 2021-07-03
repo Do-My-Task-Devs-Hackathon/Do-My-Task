@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CreateGame = () => {
+const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
     const classes = useStyles();
-
     const header = () => {
         return (
 
@@ -43,6 +42,7 @@ const CreateGame = () => {
             "description": description,
         }
         console.log(data)
+        setHostedTasksArray(hostedTasksArray.concat(data))
         AppContextProvider.createTask(data);
     }
 

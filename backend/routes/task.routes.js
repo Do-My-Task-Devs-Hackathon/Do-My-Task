@@ -21,6 +21,9 @@ module.exports = (app) => {
     // Update Task with id
     router.put("/update/:id", api.updateTask);
 
+    // Delete Task with id
+    router.delete("/delete/:id", api.deleteTask);
+
     //mount the router on the app
     app.use('/api/task', router);
 }

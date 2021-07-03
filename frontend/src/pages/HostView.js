@@ -4,7 +4,7 @@
 // import MemberCardGrid from '../components/MemberCardGrid';
 // import { makeStyles } from '@material-ui/core/styles';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import MemberCard from '../components/MemberCard';
 import Grid from '@material-ui/core/Grid';
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function HostView() {
+export default function HostView({currentTask, setCurrentTask}) {
     const [people, setPeople] = useState([
         {
             invited: false,
@@ -182,6 +182,24 @@ export default function HostView() {
         }
     ])
 
+    // const [list, setList] = useState([])
+    // useEffect(()=>{ //find all tasks related to the user_id
+    //     AppContextProvider.getAllUsers().then((res)=>{
+    //         for (let i = 0; i < res.data.length; i++){
+    //             var data = {
+    //                 invited: false,
+    //                 id: res.data[i].id,
+    //                 name: res.data[i].name,
+    //                 status: ["available","not busy","busy"][res.data[i].status],
+    //                 host: "",
+    //                 description: ""
+    //             }
+                
+    //             list.push(data)
+    //         }})
+    //         setPeople(list)
+    //         console.log(people)
+    //     },[])
 
     const classes = useStyles();
     const history = useHistory();
@@ -206,9 +224,24 @@ export default function HostView() {
         setAnchorElHostInvi(null);
     };
 
-    const data = AppContextProvider.getAllTask();
-    console.log(data)
+    
+    
     window.scrollTo(0, 0);
+
+    const submit = () => {
+        const ppl = people.filter(e=>e.invited===true)
+        for (let i = 0; i < ppl.length; i++){
+            if (ppl[i].invited === true){
+                const data = {
+                    task_id: currentTask.id, //retrieve from task's details **hard coded
+                    user_id: ppl[i].id
+                }
+                AppContextProvider.createInvitation(data)
+            }
+        }
+        history.push("/Project-A")
+    }
+
     return (
         <div>
             <section className={`${classes.hostedSection} ${classes.sectionPadding}`}>
@@ -217,7 +250,7 @@ export default function HostView() {
                 <div>
                     <div style={{float:"left"}}>
                         <Typography variant="h4">
-                            Task: Implementing UI
+                            <b>Task: </b>{currentTask.title?currentTask.title:"not here yet"}
                         </Typography>
 
                         {/*<h1 className={classes.heading}>*/}
@@ -225,7 +258,14 @@ export default function HostView() {
                         {/*</h1>*/}
                     </div>
                     <div style={{float:"right"}}>
+<<<<<<< HEAD
                         <Button className={classes.btn2} onClick={() => history.push("/Project-A")}>
+=======
+                        <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
+                            Cancel
+                        </Button>
+                        <Button className={classes.btn2} onClick={() => submit()}>
+>>>>>>> b1c28f3029fe6d069c475335400102b17a7734b9
                             Submit
                         </Button>
                         <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
