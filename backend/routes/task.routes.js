@@ -9,6 +9,15 @@ module.exports = (app) => {
     // Load value (testing purpose)
     router.get("/load", api.loadtasks);
 
+    // Retrieve Tasks with id
+    router.get("/find/:id", api.getTask);
+
+    // Retrieve all Tasks with user_id
+    router.get("/find/user/:id", api.getTask_user_id);
+
+    // Update Task with id
+    router.put("/update/:id", api.updateTask);
+
     //mount the router on the app
     app.use('/api/task', router);
 }

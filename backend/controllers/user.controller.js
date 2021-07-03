@@ -15,12 +15,26 @@
 User = require(__dirname+'/../models/User.js');         //see /models/index.js. It builds this. We could very well require the modules/index.js file, but no - we create the database models in server.js on startup.
 const Op = require("sequelize").Op;
 
-exports.login = (req, res) => {  res.send("hello. im not asking for password right now." + boss.firstName);
-}
 exports.createUser = (req,res) =>{
-  const User = require(__dirname+'/models/User.js');//fetch the Model definition
-  const jane = User.create({ firstName: "Jane", lastName: "Doe" });
-  console.log("Jane's auto-generated ID:", jane.id);
+  const user = {
+    firstName:req.body.firstName, 
+    lastName: req.body.lastName,
+    token: req.body.token,
+    status: 0 
+  };
+  console.log(user);
+
+  // Save User in the database
+  User.create(user)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the User."
+      });
+    });
     
 }
 

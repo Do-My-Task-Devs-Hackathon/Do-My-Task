@@ -4,21 +4,21 @@ const sequelize = global.db;
 class Invitation extends Model { }
 
 Invitation.init({
-
-  uid: {
+  task_id: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true // Automatically gets converted to SERIAL for postgres
+    primaryKey: true
   },
-  tid: {
+  user_id: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true // Automatically gets converted to SERIAL for postgres
+    primaryKey: true
+  },
+  status:{ // 0 - decline, 1- accept, null - pending
+    type: DataTypes.BOOLEAN
   }
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
-  modelName: 'User' // We need to choose the model name
+  modelName: 'Invitation' // We need to choose the model name
 });
 
 // // the defined model is the class itself

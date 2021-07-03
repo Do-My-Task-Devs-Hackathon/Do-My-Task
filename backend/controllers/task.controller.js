@@ -15,8 +15,9 @@ const Op = require("sequelize").Op;
 // Create a Task
 exports.createTask = (req, res) => {
   const task = {
+    user_id:req.body.user_id, 
     title:req.body.title, 
-    total_user: req.body.total_user
+    description: req.body.description
   };
   console.log(task);
 
@@ -31,7 +32,6 @@ exports.createTask = (req, res) => {
           err.message || "Some error occurred while creating the Task."
       });
     });
-  
 };
 
 // Retrieve all Tasks from the database.
@@ -124,4 +124,19 @@ exports.loadtasks = (req, res) => {
   Task.create({ title:"Design", 
                 total_user: 10});
   res.send("6 Tasks created");
+};
+
+//get all tasks with user_id
+exports.getTask_user_id = (req,res) =>{
+  const user_id = req.params.user_id;
+
+  Task.findAll({
+      where: {
+          user_id: user_id}}).then(data => {
+              res.send(data);
+          }).catch(err => {
+          res.status(500).send({
+              message: "Error retrieving Task with user_id = " + id
+          });
+      });
 };
