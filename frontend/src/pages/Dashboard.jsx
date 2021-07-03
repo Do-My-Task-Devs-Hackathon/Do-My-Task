@@ -126,20 +126,28 @@ export default function Dashboard() {
         name: name,
         email: email
     }
+
+    const [hostedCardsArray, setHostedCardsArray] = useState([])
+    const [invitedCardsArray, setInvitedCardsArray] = useState([])
+
     // const user_id = AppContextProvider.createUser(data);
     const [foundUser, setUser] = useState(null)
     useEffect(()=>{ //return User from database
-        AppContextProvider.createUser(data).then((res)=>{
-            setUser(res.data)
+        AppContextProvider
+            .createUser(data)
+            .then((res)=>{
+                setUser(res.data)
+                console.log("hello",foundUser)
+                AppContextProvider.findTasks_user_id(1).then((res) => {
+                    console.log(res.data)
+                    setHostedCardsArray(res.data)
+                })
             })
+
         },[])
     
         
-    useEffect(()=>{ //find all tasks related to the user_id
-        AppContextProvider.findTasks_user_id(1).then((res)=>{
-            console.log(res.data)
-            })
-        },[])
+
     // const [importantData, setImportantData] = useState(null)
     // useEffect(()=>{
     //         AppContextProvider.getAllUsers().then((res)=>{
@@ -154,12 +162,16 @@ export default function Dashboard() {
     //     })
     // }
 
-
+    const CG = ()=>{
+        return(
+            <CreateGame hostedTasksArray={hostedCardsArray} setHostedTasksArray={setHostedCardsArray} />
+        )
+    }
     return (
         <div>
             <ModalWindowContainer modalContent={GameDetails} open={openGD} setOpen={setOpenGD}/>
             <ModalWindowContainer modalContent={GameDetailsReadOnly} open={openGDRO} setOpen={setOpenGDRO}/>
-            <ModalWindowContainer modalContent={CreateGame} open={createTaskOpen} setOpen={setCreateTaskOpen}/>
+            <ModalWindowContainer modalContent={CG} open={createTaskOpen} setOpen={setCreateTaskOpen}/>
             <section className={`${classes.invitedSection} ${classes.sectionPadding}`}>
                 <div className={classes.hostHeader}>
                     <div className={classes.sectionTitle}>
@@ -184,9 +196,9 @@ export default function Dashboard() {
                     <Button className={classes.createBtn} onClick={()=>setCreateTaskOpen(true)}><AddIcon />Create Task</Button>
                 </div>
                 <Grid container spacing={3}>
-                    {[0,1,2,3,4].map(e=>{
+                    {hostedCardsArray.map(e=>{
                         return (<Grid item lg={3} md={3} sm={6} xs={12} className={classes.taskGrid}>
-                            <TaskCard setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host="Weak af guy who can't finish this task alone" description="I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000." />
+                            <TaskCard title={e.title} setOpenGDRO={setOpenGDRO} setOpenGD={setOpenGD} host={"it's not part of the database"} description={e.description} />
                         </Grid>)
                     })}
                 </Grid>
