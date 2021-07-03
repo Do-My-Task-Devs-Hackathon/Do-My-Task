@@ -7,8 +7,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Button from '@material-ui/core/Button'
 
-const ModalWindowContainer = ({modalContent}) => {
-    const [open, setOpen] = useState(false)
+const ModalWindowContainer = ({modalContent, open, setOpen}) => {
     const [hover, setHover] = useState(false)
 
     const handleOpen = () => setOpen(true)
@@ -20,10 +19,6 @@ const ModalWindowContainer = ({modalContent}) => {
 
     return (
         <div>
-            <button type="button" onClick={handleOpen}>
-                Open Modal
-            </button>
-
             <Modal
                 open={open}
                 onClose={handleClose}
