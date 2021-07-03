@@ -154,7 +154,7 @@ export default function TaskCard(props) {
                 </Button>
 
                 <Button className={classes.detailsBtn}>
-                    Details
+                Invite
                 </Button>
             </CardActions>
         </Card>

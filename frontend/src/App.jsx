@@ -1,5 +1,5 @@
 import './App.css';
-// import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 import HostView from './pages/HostView';
 import { Layout } from './Layout';
 import { Route } from 'react-router-dom';
@@ -26,7 +26,7 @@ function App() {
       <NavBar />
       {/* <button onClick={getToken}>Gettoken</button> */}
       <Layout>
-        <Route exact path='/' component={Dashboard} />
+        <Route exact path='/' component={HostView} />
       </Layout>
     </React.Fragment>
     
