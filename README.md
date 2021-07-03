@@ -19,7 +19,7 @@ React
 Express
 Material UI
 
-Official site: https://do-my-task.herokuapp.com/
+Official site: https://do-my-task.herokuapp.com/ (partly working due to connection issues)
 </div>
 
 [cd-url]: https://github.com/Do-My-Task-Devs-Hackathon/Do-My-Task/deployments/activity_log?environment=do-my-task
@@ -31,17 +31,35 @@ Official site: https://do-my-task.herokuapp.com/
 
  
 ## Getting Started 
+### Before we start frontend please add `.env` file under frontend with the following constants
+```
+REACT_APP_AUTH0_DOMAIN = do-my-task-devs-hackathon.au.auth0.com
+REACT_APP_AUTH0_CLIENT_ID = SNGsA3g0dCxilGNkgnrehMwgkqEY7SKH
+```
 
-To be continued
+### Backend:
+```
+cd backend
+npm i
+npm start
+```
 
+### Frontend:
+```
+cd front
+npm i
+npm start
+```
+The localhost:3000 should be live
 
+### You have to login with the following test account as following, or google account.
 ## Test account
 
-Email: test@dmt.com
+Email: test@dmt.com<br>
 Password: Dmt1234!
 
 
-## Azure account:
+## Heroku account:
 
-Email: domytask@outlook.com
-Password:task1234!@#$
+Email: domytask@outlook.com<br>
+Password: task1234!@#$
