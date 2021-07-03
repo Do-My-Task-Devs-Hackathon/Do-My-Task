@@ -1,18 +1,27 @@
 import http from "./http-common";
 
 class AppContextProvider {
-  async getAll() {
+
+  //Task routes
+  async getAllTask() {
       const data = await http.get("/api/tasks/");
     return data;
   }
 
+  async getTask(id) { // accepts Task's id
+      const data = await http.get("/api/tasks/find/"+id);
+    return data;
+  }
+
+  async create(data) { // JSON with user_id, title, description
+    return http.post("/api/tasks/create", data);
+  }
+
+  
+
 //   get(id) {
 //     return http.get(/tutorials/${id});
 //   }
-
-  create(data) {
-    return http.post("/api/tasks/create", data);
-  }
 
 //   update(id, data) {
 //     return http.put(/tutorials/${id}, data);

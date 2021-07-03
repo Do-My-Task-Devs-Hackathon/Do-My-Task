@@ -19,8 +19,8 @@ function App() {
   //   console.log(token);
   // }
   
-  function getAll() {
-    AppContextProvider.getAll().then(data => {
+  function getTask() {
+    AppContextProvider.getTask(1).then(data => {
        console.log(data.data); 
   });
 
@@ -34,7 +34,7 @@ function App() {
       <Layout>
         <Route exact path='/' component={Dashboard} />
       </Layout>
-      <button onClick={getAll()}>Clickme</button>
+      <button onClick={getTask()}>Clickme</button>
     </React.Fragment>
     
   );
