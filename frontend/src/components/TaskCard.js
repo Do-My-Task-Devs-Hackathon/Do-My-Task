@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 // import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -6,6 +6,8 @@ import { Card, CardContent, CardActions, Button } from '@material-ui/core';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Tooltip from '@material-ui/core/Tooltip';
+import ModalWindowContainer from './ModalWindowContainer'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -86,6 +88,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TaskCard(props) {
     const classes = useStyles();
+    const {setOpenGDRO, setOpenGD} = props;
+
 
     return (
         <Card className={classes.root}>
