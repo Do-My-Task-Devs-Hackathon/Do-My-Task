@@ -7,10 +7,10 @@ const CreateGameTextbox = ()=>{
             <TextField
                 className="inputbox"
                 id="outlined-multiline-static"
-                label="Multiline"
+                label="Task Description"
                 multiline
                 rows={4}
-                defaultValue="Default Value"
+
                 variant="outlined"
             />
         </div>
