@@ -1,6 +1,6 @@
 .Appbar {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: space-between !important;
+    justify-content: space-around !important;
     align-items: center !important;
 }
