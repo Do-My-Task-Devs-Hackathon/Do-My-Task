@@ -7,21 +7,22 @@ const LogoutButton = () => {
   const { user } = useAuth0();
   const { name } = user;
   return (
-    <div style={{display: 'flex'}}>
-        <p style={{fontFamily: 'Arial', marginRight: '10px'}}>
-                Hello, {name}
-        </p>
-        {/* {JSON.stringify(user.sub, null, 2)} */}
-
-        <Button 
-            variant="contained" 
-            size="small"
-            style={{marginTop: '5px', maxWidth: '100px', maxHeight: '40px', minWidth: '50px', minHeight: '20px'}}
-            onClick={() => logout({ returnTo: window.location.origin })}
-            >
-        Log Out
-        </Button>
-        
+    <div>
+      <div style={{display: 'flex'}}>
+          <p style={{fontFamily: 'Arial', textAlign: 'center'}}>
+                  {name}
+          </p>
+          {/* {JSON.stringify(user.sub, null, 2)} */}
+      </div>
+      <Button 
+          variant="contained" 
+          color="secondary"
+          size="small"
+          style={{marginTop: '5px', maxWidth: '100px', maxHeight: '40px', minWidth: '50px', minHeight: '20px'}}
+          onClick={() => logout({ returnTo: window.location.origin })}
+          >
+      Log Out
+      </Button>
     </div>
   );
 };
