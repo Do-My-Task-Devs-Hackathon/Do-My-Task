@@ -19,10 +19,10 @@ React
 Express
 Material UI
 
-Official site: https://toadd
+Official site: https://do-my-task.herokuapp.com/
 </div>
 
-[cd-url]: 
+[cd-url]: https://github.com/Do-My-Task-Devs-Hackathon/Do-My-Task/deployments/activity_log?environment=do-my-task
 <br>
 <hr>
 
