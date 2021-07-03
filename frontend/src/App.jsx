@@ -6,7 +6,7 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Loading from './components/Loading'
 import React from 'react';
 import NavBar from './components/NavBar';
-
+import AppContextProvider from './AppContextProvider';
 function App() {
 
   const { isLoading } = useAuth0();
@@ -19,14 +19,22 @@ function App() {
   //   console.log(token);
   // }
   
+  function getAll() {
+    AppContextProvider.getAll().then(data => {
+       console.log(data.data); 
+  });
+
+  }
 
   return (
     <React.Fragment>
       <NavBar />
+      
       {/* <button onClick={getToken}>Gettoken</button> */}
       <Layout>
         <Route exact path='/' component={Dashboard} />
       </Layout>
+      <button onClick={getAll()}>Clickme</button>
     </React.Fragment>
     
   );
