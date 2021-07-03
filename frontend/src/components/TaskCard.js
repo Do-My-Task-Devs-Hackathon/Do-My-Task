@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#f2f2f2",
         }
     },
-    
+
     cardTitle: {
         flexGrow: 1,
     },
@@ -92,41 +92,37 @@ export default function TaskCard(props) {
 
 
     return (
-        <>
+        <Card className={classes.root}>
+            <header className={classes.header}>
+                {!props.isInvitation ? <Tooltip title="Pending"><HourglassEmptyIcon className={classes.stateIcon} /></Tooltip> : <></>}
 
-            <Card className={classes.root}>
-                <header className={classes.header}>
-                    {!props.isInvitation ? <Tooltip title="Pending"><HourglassEmptyIcon className={classes.stateIcon} /></Tooltip> : <></>}
+                <h1 className={classes.cardTitle}>Task title</h1>
 
-                    <h1 className={classes.cardTitle}>Task title</h1>
+                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon} /> : <></>}
+            </header>
 
-                    {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon}/> : <></>}
-                </header>
+            <CardContent className={classes.content}>
+                <p className={classes.noTopBotMargin}><b>Host:</b> {props.host}</p>
+                <p className={classes.noTopBotMargin}><b>Description:</b> {props.description}</p>
+            </CardContent>
 
-                <CardContent className={classes.content}>
-                    <p className={classes.noTopBotMargin}><b>Host:</b> {props.host}</p>
-                    <p className={classes.noTopBotMargin}><b>Description:</b> {props.description}</p>
-                </CardContent>
+            <CardActions className={classes.action}>
+                {!props.isInvitation ? <>
+                    <Button className={classes.delegateBtn}>
+                        Delegate
+                    </Button>
 
-                <CardActions className={classes.action}>
-                    {!props.isInvitation ? <>
-                            <Button className={classes.delegateBtn}>
-                                Delegate
-                            </Button>
+                    <Button className={classes.detailsBtn}>
+                        Details
+                    </Button> </> :
+                    <>
+                        <Button className={classes.detailsAndAcceptBtn}>
+                            View And Accept/Decline
+                        </Button>
+                    </>
+                }
 
-                            <Button className={classes.detailsBtn} onClick={()=>setOpenGDRO(true)}>
-                                Details
-                            </Button> </> :
-                        <>
-                            <Button className={classes.detailsAndAcceptBtn} onClick={()=>setOpenGD(true)}>
-                                View And Accept/Decline
-                            </Button>
-                        </>
-                    }
-
-                </CardActions>
-            </Card>
-        </>
-
+            </CardActions>
+        </Card>
     )
 }

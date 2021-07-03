@@ -39,7 +39,7 @@ exports.createInvitation = (req,res) =>{
 
 // get all invitations with user id
 exports.getInvitation_user_id = (req,res) =>{
-    const user_id = req.params.user_id;
+    const user_id = req.params.id;
 
     Invitation.findAll({
         where: {

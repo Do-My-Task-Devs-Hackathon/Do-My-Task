@@ -9,6 +9,9 @@ module.exports = (app) => {
     // Load value (testing purpose)
     router.get("/load", api.loadtasks);
 
+    // Create Task with user_id, title, and description
+    router.post("/create", api.createTask);
+
     // Retrieve Tasks with id
     router.get("/find/:id", api.getTask);
 

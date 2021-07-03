@@ -22,6 +22,6 @@ if (config.util.getEnv('NODE_ENV') == 'test') {
 // Task.belongsTo(User);
 
 
-global.db.sync({ force: true }); // This creates the table, dropping it first if it already existed (might need to remove)
+// global.db.sync({ force: true }); // This creates the table, dropping it first if it already existed (might need to remove)
 module.exports = db;        //Controllers look for db, then classes off that.
 
