@@ -1,11 +1,20 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardHeader, CardContent, CardActions, Button } from '@material-ui/core';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import React, {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import {Card, CardContent, CardActions, Button} from '@material-ui/core';
+// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+// import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Tooltip from '@material-ui/core/Tooltip';
+import ModalWindowContainer from './ModalWindowContainer'
+import { useHistory } from 'react-router';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -86,15 +95,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TaskCard(props) {
     const classes = useStyles();
+    const {setOpenGDRO, setOpenGD} = props;
+    let match = useRouteMatch();
+    const history = useHistory();
 
     return (
         <Card className={classes.root}>
             <header className={classes.header}>
-                {!props.isInvitation ? <Tooltip title="Pending"><HourglassEmptyIcon className={classes.stateIcon} /></Tooltip> : <></>}
+                {!props.isInvitation ?
+                    <Tooltip title="Pending"><HourglassEmptyIcon className={classes.stateIcon}/></Tooltip> : <></>}
 
                 <h1 className={classes.cardTitle}>Task title</h1>
 
-                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon} /> : <></>}
+                {!props.isInvitation ? <RemoveCircleIcon className={classes.closeIcon}/> : <></>}
             </header>
 
             <CardContent className={classes.content}>
@@ -104,15 +117,16 @@ export default function TaskCard(props) {
 
             <CardActions className={classes.action}>
                 {!props.isInvitation ? <>
-                    <Button className={classes.delegateBtn}>
-                        Delegate
-                    </Button>
+                            <Button onClick={() => history.push("/delegate")} className={classes.delegateBtn}>
+                                Delegate
+                            </Button>
 
-                    <Button className={classes.detailsBtn}>
-                        Details
-                    </Button> </> :
+
+                        <Button className={classes.detailsBtn} onClick={() => setOpenGDRO(true)}>
+                            Details
+                        </Button> </> :
                     <>
-                        <Button className={classes.detailsAndAcceptBtn}>
+                        <Button className={classes.detailsAndAcceptBtn} onClick={() => setOpenGDRO(true)}>
                             View And Accept/Decline
                         </Button>
                     </>
