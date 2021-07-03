@@ -104,26 +104,26 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         // "padding": "2",
-        margin: "5px 5px 5px 5px",
+        margin: "5px 15px",
         "border-style": "solid",
         // borderWidth: "15px",
         borderColor: "transparent",
         backgroundColor: "#c8d8e4",
         color: "black",
         "&:hover": {
-            backgroundColor: "#f1f0ff",
+            backgroundColor: "#dbdbdb",
         },
     },
     btn2: {
         // "padding": "2",
-        margin: "5px 5px 5px 5px",
+        margin: "5px 15px",
         "border-style": "solid",
         // borderWidth: "15px",
         borderColor: "transparent",
-        backgroundColor: "#52ab98",
-        color: "black",
+        backgroundColor: "#2b6777",
+        color: "white",
         "&:hover": {
-            backgroundColor: "#f1f0ff",
+            backgroundColor: "#52ab98",
         },
     },
     invisible: {}
@@ -135,7 +135,7 @@ export default function HostView() {
         {
             invited: false,
             id: 0,
-            name: "Josh Xi",
+            name: "Josh Lim",
             status: "busy",
             host: "Weak af guy who can't finish this task alone",
             description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000.",
@@ -159,7 +159,7 @@ export default function HostView() {
         {
             invited: false,
             id: 3,
-            name: "Kan Qi Wen",
+            name: "Steven Kan",
             status: "available",
             host: "Weak af guy who can't finish this task alone",
             description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000."
@@ -225,11 +225,11 @@ export default function HostView() {
                         {/*</h1>*/}
                     </div>
                     <div style={{float:"right"}}>
-                        <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
-                            Cancel
-                        </Button>
                         <Button className={classes.btn2} onClick={() => history.push("/Project-A")}>
                             Submit
+                        </Button>
+                        <Button className={classes.btn} onClick={() => history.push("/Project-A")}>
+                            Cancel
                         </Button>
                     </div>
                 </div>

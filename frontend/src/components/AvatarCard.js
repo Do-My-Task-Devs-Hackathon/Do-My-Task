@@ -8,8 +8,23 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "15px",
+        // backgroundColor: "transparent",
+        padding: "5px",
+        maxWidth: "100%",
+        borderRadius: "20px",
+        backgroundColor: "#f2f2f2",
     },
+
+    img: {
+        height: "50px",
+        width: "50px",
+    },
+
+    paragraph: {
+        fontSize: "12px",
+        marginTop: "2px",
+        marginBottom: "2px",
+    },    
 }));
 
 
@@ -20,9 +35,8 @@ export default function AvatarCard(props) {
 
     return (
         <Card className={classes.root}>
-            <Avatar src="https://scontent-akl1-1.xx.fbcdn.net/v/t1.6435-1/cp0/p50x50/193711539_3958024440945392_5869130516519871956_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=7206a8&_nc_ohc=W9St27I77bEAX-18tT8&_nc_ht=scontent-akl1-1.xx&tp=27&oh=e0a68393dcd12c50eb9513053c17efaa&oe=60E456B4">{fname.charAt(0).toUpperCase() + lname.charAt(0).toUpperCase()}</Avatar>
-            <h1>{fname + " " + lname}</h1>
-
+            <Avatar className={classes.img} src={props.img}>{fname.charAt(0).toUpperCase() + lname.charAt(0).toUpperCase()}</Avatar>
+            <p className={classes.paragraph}>{fname + " " + lname}</p>
         </Card>
     )
 }

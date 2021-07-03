@@ -10,9 +10,8 @@ import { useHistory } from 'react-router';
 const useStyles = makeStyles((theme) => ({
     card: {
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-        minWidth: "250px",
         height: "250px",
-        maxWidth: "320px",
+        maxWidth: "100%",
         overflow: "auto",
         "&:hover": {
             opacity: 0.6,
