@@ -11,13 +11,15 @@ import {
 } from "react-router-dom";
 import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import Loading from './components/Loading'
-import React from 'react';
+import React, {useState} from 'react';
 import NavBar from './components/NavBar';
 import AppContextProvider from './AppContextProvider';
 
 function App() {
 
     const {isLoading} = useAuth0();
+    const [currentTask, setCurrentTask] = useState({});
+    
     if (isLoading) {
         return <Loading/>;
     }
@@ -27,6 +29,17 @@ function App() {
     //   console.log(token);
     // }
 
+    const HV = ()=>{
+        return (
+            <HostView currentTask={currentTask} setCurrentTask={setCurrentTask} />
+        )
+
+    }
+    const DASH = ()=>{
+        return(
+            <Dashboard currentTask={currentTask} setCurrentTask={setCurrentTask} />
+        )
+    }
     
     return (
         <React.Fragment>
@@ -36,8 +49,8 @@ function App() {
                 <Router>
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route exact path='/Project-A' component={Dashboard}/>
-                        <Route exact path='/delegate' component={HostView}/>
+                        <Route exact path='/Project-A' component={DASH}/>
+                        <Route exact path='/delegate' component={HV}/>
                     </Switch>
                 </Router>
 

@@ -8,7 +8,7 @@ import './CreateGameSingleLineInput.css'
 import CommonButton from '../CommonButton'
 import AppContextProvider from '../../AppContextProvider.js'; 
 
-const CreateGame = () => {
+const CreateGame = ({hostedTasksArray,setHostedTasksArray}) => {
     const header = () => {
         return (
             <Paper className="container header">
@@ -31,6 +31,7 @@ const CreateGame = () => {
             "description": description,
         }
         console.log(data)
+        setHostedTasksArray(hostedTasksArray.concat(data))
         AppContextProvider.createTask(data);
     }
 

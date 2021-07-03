@@ -130,12 +130,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function HostView() {
+export default function HostView({currentTask, setCurrentTask}) {
     const [people, setPeople] = useState([
         {
             invited: false,
             id: 0,
-            name: "Josh Xi",
+            name: "Josh Lim",
             status: "busy",
             host: "Weak af guy who can't finish this task alone",
             description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000.",
@@ -159,7 +159,7 @@ export default function HostView() {
         {
             invited: false,
             id: 3,
-            name: "Kan Qi Wen",
+            name: "Steven Kan",
             status: "available",
             host: "Weak af guy who can't finish this task alone",
             description: "I don't know what I am doing but if anyone can help me right now, imma pay him $10000000000."
@@ -249,7 +249,7 @@ export default function HostView() {
                 <div>
                     <div style={{float:"left"}}>
                         <Typography variant="h4">
-                            Task: Implementing UI
+                            <b>Task: </b>{currentTask.title?currentTask.title:"not here yet"}
                         </Typography>
 
                         {/*<h1 className={classes.heading}>*/}
